@@ -1,0 +1,87 @@
+\documentclass[final]{ubb_dolgozat}
+\usepackage{definitions}
+\sloppy
+\frenchspacing
+
+\lstloadlanguages{Java}
+
+\lstset{language=Java}
+
+\submityear{
+2016
+}
+\submitmonthHU{
+Július
+}
+\submitmonthRO{
+Iulie
+}
+\submitmonthEN{
+July
+}
+
+\titleHU{
+Kontroll és egyensúlyozás -- alkalmazás Lego robotnál
+}
+
+\titleEN{
+Control and balancing -- applied to Lego robots
+}
+
+\titleRO{
+Control \c{s}i echilibrare -- aplicat la robo\c{t}i Lego
+}
+
+\author{
+Márton Zete-Örs
+}
+
+\tutorHU{
+dr. Jakab Hunor,\newline egyetemi adjunktus\\
+}
+\tutorRO{
+Lector dr. Hunor Jakab\\
+}
+\tutorEN{
+Assist prof. dr. Hunor Jakab
+}
+
+\begin{document}
+
+\begin{abstractEN}
+	
+A szakdolgozat célja egy egyensúlyozó, kétkerekű MINDSTORMS EV3 robot irányításának megoldása hálózaton keresztül, telefonos alkalmazás segítségével. Ennek a célnak az eléréséhez szükséges tanulmányozni a robot egyensúlyozásának működését. Az alkalmazás és az egyensúlyozási algoritmus Java-ban íródott. A robot irányításáért felelős az EV3, amelyen Linux alapú leJOS keretrendszer fut. A robot PID (Proportional Integral Derivative) kontroller alkalmazásával és giroszkóp szenzor használatával marad egyensúlyban. A PID bemeneti értékét négy különböző komponens határozza meg: sebesség, pozíció, dőlési szög és szögsebesség. A felsoroltak megfelelő módosítása lehetővé teszi a robot mozgásának manipulálását. Az alkalmazás hálózaton keresztül kapcsolódik a robothoz és küldi a megfelelő értékeket.
+
+This work is the result of my own activity. I have neither given nor received unauthorized assistance on this work.
+
+\end{abstractEN}
+
+\maketitle
+
+{ \baselineskip 1ex
+  \parskip 1ex
+  \tableofcontents
+}
+
+\include{bevezeto}
+
+\include{lego_robot}
+
+\include{robot_programozasa}
+
+\include{egyensulyozas}
+
+\include{kontroller}
+
+\include{gyakorlat}
+
+\include{fejleszthetoseg}
+
+{ \renewcommand{\baselinestretch}{0.8}\normalsize %
+  \setlength{\itemsep}{-2.4mm}
+  \setlength{\bibspacing}{0.67\baselineskip}
+  \bibliographystyle{abbrvnat_hu}
+  \bibliography{dolgozat}
+}
+
+\end{document}
