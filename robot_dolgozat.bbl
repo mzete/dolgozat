@@ -1,72 +1,14 @@
-\begin{thebibliography}{11}
+\begin{thebibliography}{1}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
-\bibitem[Baldi \'es Brunak(1998)]{BaldiBrunak98}
-Baldi, P. \'es Brunak, S.
-\newblock \emph{Bioinformatics: The Machine Learning Approach}.
-\newblock The MIT Press, 1998.
+\bibitem[lego()]{lego}
+LEGO történelme.
+\newblock \url{http://www.lego.com/en-us/aboutus/lego-group/the_lego_history/1930}.
+\newblock Utolsó megtekintés dátuma: 2016-05-06.
 
-\bibitem[Boyd \'es Vandenberghe(2004)]{Boyd04}
-Boyd, S.~P. \'es Vandenberghe, L.
-\newblock \emph{Convex Optimization}.
-\newblock Cambridge University Press, Cambridge, UK, 2004.
-\newblock URL \url{http://www.stanford.edu/~boyd/cvxbook.html}.
-
-\bibitem[Doob(1995)]{Doob95}
-Doob, M.
-\newblock \emph{{T}e{X} könnyedén (A gentle introduction to {T}e{X})}.
-\newblock POLYGON, 1995.
-\newblock URL \url{http://www.inf.unideb.hu/~matex/konyvek/texkonyvek.html}.
-
-\bibitem[Heinz \'es Moses(2007)]{listingCite}
-Heinz, C. \'es Moses, B.
-\newblock The listings package.
-\newblock Technical report, CTAN TEX Archive, 2007.
-\newblock URL
-  \url{http://www.ctan.org/tex-archive/macros/latex/contrib/listings}.
-
-\bibitem[Mitchell(1997)]{Mitchell97}
-Mitchell, T.~M.
-\newblock \emph{Machine Learning}.
-\newblock Computer Science Series. McGraw-Hill, New York, 1997.
-
-\bibitem[Mittelbach et~al.(2004)Mittelbach, Goossens, Braams, Carlisle, \'es
-  Rowley]{MittelbachEtAl04}
-Mittelbach, F., Goossens, M., Braams, J., Carlisle, D., \'es Rowley, C.
-\newblock \emph{The Latex Companion}.
-\newblock Addison Wesley, 2004.
-
-\bibitem[Nabney(2002)]{Nabney02}
-Nabney, I.~T.
-\newblock \emph{{NETLAB} - Algorithms for Pattern Recognition}.
-\newblock Springer, 2002.
-
-\bibitem[Oetiker et~al.(1998)Oetiker, Partl, Hyna, \'es
-  Schlegl]{LatexNotSoShortHU}
-Oetiker, T., Partl, H., Hyna, I., \'es Schlegl, E.
-\newblock Egy nem túl rövid bevezet{\H{o}} a {L}a{T}ex használatába.
-\newblock Technical report, BME math Latex, 1998.
-\newblock URL \url{http://www.math.bme.hu/latex}.
-
-\bibitem[Oetiker et~al.(2008)Oetiker, Partl, Hyna, \'es
-  Schlegl]{LatexNotSoShort}
-Oetiker, T., Partl, H., Hyna, I., \'es Schlegl, E.
-\newblock The not so short introduction to {L}a{T}ex.
-\newblock Technical report, CTAN TEX Archive, 2008.
-\newblock URL \url{http://www.ctan.org/tex-archive/info/lshort/english}.
-
-\bibitem[Rabiner \'es Juang(1993)]{RabinerJuang93}
-Rabiner, L. \'es Juang, B.-H.
-\newblock \emph{Fundamentals of Speech Recognition}.
-\newblock Prentice-Hall, 1993.
-
-\bibitem[Vapnik(1995)]{Vapnik95}
-Vapnik, V.~N.
-\newblock \emph{The Nature of Statistical Learning Theory}.
-\newblock Springer-Verlag, 1995.
 
 \end{thebibliography}

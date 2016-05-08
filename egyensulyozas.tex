@@ -1,2 +1,19 @@
 \chapter{Egyensúlyozás}\label{ch:EGYENSULY}
-\section{Működése}\label{sec:EGYENSULY:mukodes}
+\begin{osszefoglal}
+E fejezet célja, hogy bemutassa a PID szabályzó algoritmus működését. E mellet sorkelűr az egyensúlyozás működésének leírására, valamint hogy miként lehet felhasználni ez esetbe a PID szabályzó algoritmust.
+\end{osszefoglal}
+
+\section{PID szabályzó algoritmus}\label{sec:EGYENSULY:pid}
+A PID \texttt{(Proportional Integral Derivate)} elterjedt algoritmus az ipari szabályzó körökben köszönhetően a viszonylag egyszerű félépítéséért és a könnyen kezelhetőségéért. Számos felhasználási lehetősége van, ilyenek a nyomás, hőmérséklet, sebesség szabályozás.
+
+A PID, mint a nevéből is látható három tagból tevődik össze: P \texttt{(Proportional)} proporcinális tag, I \texttt{(Integral)} a hibák integrált tagja és a D \texttt{(Derivate)} a hibák időbeli változásának derivált tagja. Több változata is van, azok az esetek mikor nem valósulnak meg az előbb felsoroltak mindegyike, ilyenkor beszélünk P, PI, PD szabályokról.
+
+PID szabályzó matematikai képlete: $$u(t)=K_{P}e(t)+K_{I}\int e(t)dt+K_{D}\frac{d}{dt}e(t),$$ ahol bemeneti hiba jelöle az e(t), u(t) a kimenet. A $K_{P}, K_{I}, K_{D}$ rendre a proporcinális, integrált és a derivált súlyát határozzák meg.
+
+Esetünkben a P az aktuális hiba, I a hibák összességének integráltja, D az aktuális és az előző hiba időbeli változásának deriváltja. A tagok súlyát meghatározó konstansok jelentős befolyással vannak a kimenetre. 
+
+A $K_{P}$ befolyásolja a szabályzó érzékenységét, instabilitást okozhat. A magas erősítés, amely nagy oszcillációt idéz elő, ellentétben áll az alacsony erősítéssel, hiszen az utóbbi kicsi oszcillációt idéz elő. Ezen estekben a robot elveszti az egyensúlyi állapotát. 
+
+A $K_{I}$ erősítő esetén figyelembe kell venni, hogy az integrált tag folytonosan nő és a túl nagy érték túllendülést eredményez. 
+
+A $K_{D}$ a hiba változásának mértékét határozza meg. Amennyiben az aktuális és előző hiba közti különbség nagy, hirtelen változást idéz elő a szabályzó kimenetén. A derivált szerepe, hogy csökkentse a kimenet hirtelen változását, megakadályozva a hirtelen sebesség növekedést. Magas erősítés okozhat instabilitási problémákat.

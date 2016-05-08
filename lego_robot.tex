@@ -1,17 +1,17 @@
 \chapter{LEGO} \label{ch:ROBOT}
 
 \begin{osszefoglal}
-	A fejezet alatt, bemutatásra kerül a LEGO megalakulása, fejlődése. E mellet sor kerül a LEGO MINDSTORMS által kifejlesztett technológiák bemutatása, amelyek közül egy pár felhasználásra kerül a továbbiakban.
+A fejezetben, bemutatásra kerül a LEGO megalakulása, fejlődése. E mellet sor kerül a LEGO MINDSTORMS által kifejlesztett technológiák bemutatása, amelyek közül egy pár felhasználásra kerül a továbbiakban.
 \end{osszefoglal}
 
 \section{LEGO megalakulása}\label{sec:ROBOT:lego}
-A LEGO története 1932-ben kezdődött,  Ole Kirk Christiansen asztalos vállalkozást alapított Dánia, Billund nevezetű falujában, amely a fa játékok gyártásával foglakozott. 1934-ben vette fel a cég a LEGO nevet, amely a LEG GODT Dán szóból ered. 1947 után kezdtek el műanyagból előállítani játékokat amelyek fő célja az volt, hogy könnyedén egymásba illeszthetőek illetve szétszedhetőek legyenek. Az alapító fia Godtfred Christian lett az igazgató 1958-ban, ekkor alakult meg a ma ismert LEGO vállalat és vezetésével fellendült a cég. Az első számítógép által vezérelt robot 1986-ban jelent meg, amelyet követően 1988-ban a LEGO és az MIT (Massachusetts Institute of Technology) együttműködésével elkezdődött az "inteligens tégla" fejlesztése, mely lehetőséget ad a programozhatóságra.
+A LEGO \cite{lego} története 1932-ben kezdődött, Ole Kirk Christiansen asztalos vállalkozást alapított Dánia, Billund nevezetű falujában, amely a fa játékok gyártásával foglakozott. 1934-ben vette fel a cég a LEGO nevet, amely a LEG GODT Dán szóból ered. 1947 után kezdtek el műanyagból előállítani játékokat amelyek fő célja az volt, hogy könnyedén egymásba illeszthetőek illetve szétszedhetőek legyenek. Az alapító fia Godtfred Christian lett az igazgató 1958-ban, ekkor alakult meg a ma ismert LEGO vállalat és vezetésével fellendült a cég. Az első számítógép által vezérelt robot 1986-ban jelent meg, amelyet követően 1988-ban a LEGO és az MIT \texttt{(Massachusetts Institute of Technology)} együttműködésével elkezdődött az "inteligens tégla" fejlesztése, mely lehetőséget ad a programozhatóságra.
 
 \section{LEGO MINDSTORMS}\label{sec:ROBOT:mindstorms}
-A LEGO első játéka amit forgalmazott Ole Kirk Christians vezetésével a fából készült "LEGO Duck" évekkel később megjelentek a műanyag játékok. Ma már világszerte ismert a LEGO építőjáték, egymással összeilleszthető, kombinálható elemeket tartalmaz így szinte bármi megépíthető belőle és rendkívül hasznos oktatási eszköz. 
+A LEGO  első játéka amit forgalmazott Ole Kirk Christians vezetésével a fából készült "LEGO Duck" évekkel később megjelentek a műanyag játékok. Ma már világszerte ismert a LEGO építőjáték, egymással összeilleszthető, kombinálható elemeket tartalmaz így szinte bármi megépíthető belőle és rendkívül hasznos oktatási eszköz. 
 
 A LEGO MINDSTORMS, egy programozható robotikai építőkészlet. Lehetőséget ad, hogy megépítsd, programozd és irányítsd a robotot.
-1998-ban jelent meg az első generáció az RXC  (Robotic Command eXplorers), akkoriban nagy előrelépés volt mivel, teljesen autonóm, képes számítógép nélkül is működni de mára már elavult. Az évek során sokat fejlődött és ma már egyre több oktatási intézmény használja a robotika oktatásban.
+1998-ban jelent meg az első generáció az RXC \texttt{(Robotic Command eXplorers)}, akkoriban nagy előrelépés volt mivel, teljesen autonóm, képes számítógép nélkül is működni de mára már elavult. Az évek során sokat fejlődött és ma már egyre több oktatási intézmény használja a robotika oktatásban.
 
 \subsection{RXC}
 
@@ -57,9 +57,9 @@ Az NXT generációval megjelentek a szervomotorok, amelyek legfőbb tulajdonság
 \subsection{Nagy motor}
 A nagy motor, amely a \ref{fig:lMotor} ábrázol, erőteljes, ideális a általunk megépített robot irányítására. A motorba beépített forgásérzékelő által  információkat lehet lekérni az pillanatnyi állapotáról, amely fokban vagy teljes fordulatban mér.
 
-A nagy motorok sebessége 160-170 rmp, futási nyomatéka 20 N/cm és a leálló nyomatéka 40N/cm. A motor tachométer visszacsatolást használ az aktuális helyzetmeghatározásra és ezáltal lehetővé téve a pontos vezérlés lehetőséget 1 fok eltéréssel.
+A nagy motorok sebessége 160-170 rmp, forgatónyomaték 20 N/cm és ha blokkolt állapotba kerül akkor a nyomatéka 40N/cm. A motor beépített forgásérzékelője lehetővé teszi a pontos vezérlést, +/- 1 fok pontossággal.
 
-A robot mozgatását a nagy motorok segítségével fogjuk elérni, ha bár lassabbak mint a közepes motorok de nagyobb a nyomatékuk és a precizitásuk megegyezik.
+A robot mozgatását a nagy motorok segítségével fogjuk elérni, ha bár lassabbak mint a közepes motorok de nagyobb a nyomatékuk és a precizitásuk azonos.
 
 \begin{figure}[!htb]
 	\label{fig:lMotor}
@@ -69,7 +69,7 @@ A robot mozgatását a nagy motorok segítségével fogjuk elérni, ha bár lass
 \end{figure}
 
 \subsection{Közepes motor}
-A közepes motor, amely a \ref{fig:mMotor} ábrázol, tulajdonságai néhol megegyeznek a nagy motorhoz képest. Ugyancsak tartalmaz forgásérzékelőt és lehetséges a helyzetmeghatározás 1 fok eltéréssel, viszont alacsonyabb terhelésre tervezték, futási nyomatéka 8 N/cm, leálló nyomatéka 12 N/cm és a sebessége 240-250 rmp.
+A közepes motor, amely a \ref{fig:mMotor} ábrázol, tulajdonsága megegyezik a nagy motorjaival. Ugyancsak tartalmaz forgásérzékelőt és lehetséges a helyzetmeghatározás 1 fok eltéréssel, viszont alacsonyabb terhelésre tervezték, forgatónyomatéka 8 N/cm, ha blokkolt állapotba kerül akkor a nyomatéka 12 N/cm és a sebessége 240-250 rmp.
 
 \begin{figure}[!htb]
 	\label{fig:mMotor}
@@ -80,11 +80,11 @@ A közepes motor, amely a \ref{fig:mMotor} ábrázol, tulajdonságai néhol mege
 
 \section{Ev3 szenzorok}\label{sec:ROBOT:szenzorok}
 
-Az NXT csomagban már számos szenzor megtalálható volt ilyenek, mint az érintés, hang, szín és ultrahang szenzorok, amelyeket felhasználva több különböző funkcionalitásokkal bővíthetjük a megépített robotunkat. Az EV3 megjelenése magával hozott még két új szenzort, a giroszkóp és az infravörös szenzorokat. Ezek mellet fejlesztették a már meglévő szenzorokat is.
+Az NXT csomagban számos szenzor megtalálható, ilyenek mint az érintés, hang, szín és ultrahang szenzorok, amelyeket felhasználva több különböző funkcionalitásokkal bővíthetjük a megépített robotunkat. Az EV3 megjelenése magával hozott még két új szenzort, a giroszkóp és az infravörös szenzorokat. Ezek mellet fejlesztették a már meglévő szenzorokat is.
 
 \subsection{Színszenzor}
 
-A digitális színszenzor, amely a \ref{fig:colorSensor} ábrázol, hét különböző színt ismer fel. A színfelismerő funkcionalitásán kívül mérhető vele a fényvisszaverődés erőssége vagy a környezeti fény intenzitását. E három üzemmód lehető teszi a felhasználóknak, hogy akár kövessen egy fekete vonalat vagy megkülomboztessen szín szerint tárgyakat és még sok más felhasználási lehetősége van.
+A digitális színszenzor, amely a \ref{fig:colorSensor} ábrázol, hét különböző színt ismer fel. A színfelismerő funkcionalitásán kívül mérhető vele a fényvisszaverődés erőssége vagy a környezeti fény intenzitását. E három üzemmód lehető teszi a felhasználóknak, hogy akár kövessen egy fekete vonalat vagy megkülönböztetésen szín szerint tárgyakat és még sok más felhasználási lehetősége van.
 
 \begin{figure}[!htb]
 	\label{fig:colorSensor}
@@ -95,9 +95,9 @@ A digitális színszenzor, amely a \ref{fig:colorSensor} ábrázol, hét külön
 
 \subsection{Giroszkóp szenzor}
 
-A digitális giroszkóp szenzor, látható a \ref{fig:gyroSensor} ábrán, amelyet mi is felhasználunk, az EV3-al jelent meg. A giroszkóp már a mindennapjaink része, megtalálható okos telefonokba, különféle navigációs rendszerek vagy akár irányításért felelős vezérlőegységek használják. A szenzor 90 fokos elfordulási szöget tud mérni, az intervalluma -90 és 90 fok között van. Látható a \ref{fig:gyroFok} ábrán, hogy a giroszkóp tartalmaz két nyilat amelyek segítségével betudjuk állítani a pozícióját, mivel ha jobb oldali nyíl irányába mozdítjuk akkor mínusz értéket kapunk és ha ellentétesen akkor egyértelműen pozitívat. 
+A digitális giroszkóp szenzor, látható a \ref{fig:gyroSensor} ábrán, amelyet mi is felhasználunk, az EV3-al egy időben jelent meg. A giroszkóp igen elterjedt szenzor, megtalálható okostelefonokban, különféle navigációs rendszerek vagy akár irányításért felelős vezérlőegységek használják. A EV3 giroszkóp szenzora egy tengely mentén tud mérni. Látható a \ref{fig:gyroFok} ábrán, hogy a giroszkóp tartalmaz két nyilat amelyek segítségével betudjuk állítani a pozícióját, ha jobb oldali nyíl irányába mozdítjuk akkor mínusz értéket kapunk és ha ellentétesen akkor egyértelműen pozitívat. 
 
-A giroszkóp szenzor pontossága +/-3 fok, maximális információ megosztási sebessége 440 fok/másodperc és a mintavételezési sebessége 1 kHz. A sebességét kihasználva simítjuk  a +/-3 foknyi eltérését oly módon, hogy többször mintavételezünk egy adott pillanatban amelyek összességét átlagoljuk, így elérve a pontosabb szög megközelítését.
+A giroszkóp három módban használható. Mérhető az elfordulási szög fokban -90 és 90 intervallumba, a szög gyorsulása illetve lehetséges a két mód használata egyszerre.A pontossága szögmérés esetén +/-3 fok, szög gyorsulása eseté pontosabb. Maximális információ megosztási sebessége 440 fok/másodperc és a mintavételezési sebessége 1 kHz. A sebességét kihasználva simítjuk  a +/-3 fok szórását oly módon, hogy többször mintavételezünk.
 
 \begin{figure}[!htb]
 	\centering
@@ -124,7 +124,7 @@ Az analóg nyomásérzékelője egy piros gombbal van felszerelve ami látható 
 \end{figure}
 
 \subsection{Ultrahang szenzor}
-A digitális ultrahang szenzor látható a \ref{fig:ultrasonicSensor} ábrán, amely +/- 1 cm hibával meghatározza, hogy milyen távolságra van az előtte lévő tárgy. A hatótávolsága 250 cm és működése a magas frekvencia kibocsátására  alapszik. Számolja az előtte lévő tárgyról visszaverődő frekvenciák érkezésének idejét, ezáltal határozza meg a távolságot. 
+A digitális ultrahang szenzor látható a \ref{fig:ultrasonicSensor} ábrán, amely +/- 1 cm hibával meghatározza, hogy milyen távolságra van az előtte lévő tárgy. A hatótávolsága 250 cm és működése a magas frekvencia kibocsátására  alapszik. Számolja az előtte lévő tárgyról visszaverődő frekvenciák érkezésének idejét, ezáltal határozza meg a távolságot. Az akadály pontos irányának meghatározása úgy lehetséges ha több mérést végzünk oldal mozgással. Így lehetőség van, hogy kiszámoljuk az akadály irányát.
 
 \begin{figure}[!htb]
 	\label{fig:ultrasonicSensor}

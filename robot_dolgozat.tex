@@ -1,6 +1,5 @@
 \documentclass[final]{ubb_dolgozat}
 \usepackage{definitions}
-
 \sloppy
 \frenchspacing
 
@@ -51,7 +50,7 @@ Assist prof. dr. Hunor Jakab
 
 \begin{abstractEN}
 	
-A szakdolgozat célja egy egyensúlyozó, kétkerekű MINDSTORMS EV3 robot irányításának megoldása hálózaton keresztül, telefonos alkalmazás segítségével. Ennek a célnak az eléréséhez szükséges tanulmányozni a robot egyensúlyozásának működését. Az alkalmazás és az egyensúlyozási algoritmus Java-ban íródott. A robot irányításáért felelős az EV3, amelyen Linux alapú leJOS keretrendszer fut. A robot PID (Proportional Integral Derivative) kontroller alkalmazásával és giroszkóp szenzor használatával marad egyensúlyban. A PID bemeneti értékét négy különböző komponens határozza meg: sebesség, pozíció, dőlési szög és szögsebesség. A felsoroltak megfelelő módosítása lehetővé teszi a robot mozgásának manipulálását. Az alkalmazás hálózaton keresztül kapcsolódik a robothoz és küldi a megfelelő értékeket.
+A szakdolgozat célja egy egyensúlyozó, kétkerekű MINDSTORMS EV3 robot irányításának megoldása hálózaton keresztül, telefonos alkalmazás segítségével. Ennek a célnak az eléréséhez szükséges tanulmányozni a robot egyensúlyozásának működését. Az alkalmazás és az egyensúlyozási algoritmus Java-ban íródott. A robot irányításáért felelős az EV3 vezérlő egység, amelyen Linux alapú leJOS keretrendszer fut. A robot PID (Proportional Integral Derivative) kontroller alkalmazásával és giroszkóp szenzor használatával marad egyensúlyban. A PID bemeneti értékét négy különböző komponens határozza meg. A komponensek megfelelő módosítása lehetővé teszi a robot mozgásának manipulálását. Mobil részre egy mobil alkalmazás, amely hálózaton keresztül kapcsolódik a robothoz és küldi a megfelelő értékeket.
 
 This work is the result of my own activity. I have neither given nor received unauthorized assistance on this work.
 
@@ -65,24 +64,19 @@ This work is the result of my own activity. I have neither given nor received un
 }
 
 %\include{bevezeto}
-
 \include{lego_robot}
-
+\include{egyensulyozas}
 %\include{robot_programozasa}
-
-%\include{egyensulyozas}
-
 %\include{kontroller}
-
 %\include{gyakorlat}
-
 %\include{fejleszthetoseg}
-
-{ \renewcommand{\baselinestretch}{0.8}\normalsize %
+\appendix
+{ 
+  \renewcommand{\baselinestretch}{1.0}\normalsize %
   \setlength{\itemsep}{-2.4mm}
   \setlength{\bibspacing}{0.67\baselineskip}
   \bibliographystyle{abbrvnat_hu}
-  \bibliography{dolgozat}
+  \bibliography{hivatkozasok}
 }
 
 \end{document}
