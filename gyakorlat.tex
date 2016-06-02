@@ -1,4 +1,15 @@
 \chapter{Megvalósítás}\label{ch:MEGVALOSITAS}
-\section{Elképzelések}\label{ch:MEGVALOSITAS:elkepzeles}
-\section{Akadályok}\label{ch:MEGVALOSITAS:akadaly}
-\section{Megoldások}\label{ch:MEGVALOSITAS:megoldas}
+\begin{osszefoglal}
+	A projekt egy EV3 készletből épített kétkerekű egyensúlyozó robot irányítását valósítja meg hálózaton keresztül, telefonos alkalmazáson segítségével. E fejezet alatt bemutatásra kerülnek a megvalósítás során felmerült problémák és ezek megoldása.
+\end{osszefoglal}
+\section{EV3 programozása}\label{sec:MEGVALOSITAS:lejos}
+A LEGO MINDSTORMS kifejlesztett egy programozási környezetet, mely célja, hogy a megépített robotot különböző funkcionalitásokkal lehessen felruházni. E környezet lehetővé teszi a kisebb korosztály számára is a robotok programozását. Különböző grafikus elemekből úgynevezett blokkokból épül fel a program, amely USB-n keresztül kitelepíthető az EV3 vezérlőegységen futó LEGO MINDSTORMS által fejlesztett firmware.
+Az előbb említett programozási környezet előnyös kisebb programok megírására de komplexebb problémák megoldására nem alkalmas. Ezért több firmware-t is kifejlesztettek melyek magas szintű programozási nyelveket támogatnak. Esetünkben a leJOS firmware-t használjuk.
+
+A leJOS firmware-t José Solórzano hozta létre 1999 végén és azóta is folyamatosan fejlesztik. Linux alapú, nyílt forráskódú, magába foglalja a JVM-t (Java virtual machine), a nevében is szerepel JOS(Java Operating System). Lehetővé teszi, a robot programozását Java-ban, támogatja a objektum orientált programozást. Mindezek lehetővé teszik a socket alapú komunikációt, szinkronizálhatóságot, szálak alkalmazását, Java típusok használatát és támogatja az EV3 szenzorokat.
+
+Annak érdekében, hogy az EV3 vezérlőegységen futtassuk és könnyedén kitelepitsük a programokat az Eclipse IDE fejlesztői környezetre van szükség és a leJOS plugin-ra.
+
+Mivel az EV3 vezérlőegységen az alapértelmezett firmware van telepítve ezért külön SD kártyára felkel telepíteni a leJOS-t. Legalább 2GB-os SD kártya de ne legyen 32GB-nál nagyobb és ne SDXC típusú legyen, mert nem ismeri fel az EV3 hardware. Az SD kártyát szükséges formázni FAT32 típusú partícióra. A leJOS számítógépre való telepítése során szükség lesz az 1.7 JDK-ra(Java Development Kit). Az előkészített program segítségével feltelepíthető a leJOS firmware az SD kártyára, ehhez még kell a JRE(Java Runtime Environment) is. Sikeres telepítés után az SD kártyát behelyezve az EV3 vezérlőegységbe elinditható a firmware, ha az alapértelmezett rendszer indul el akkor megkel ismételni az SD kártyára való telepítést. Ezt követően telepítésük az Eclipse plugin-t majd berakjuk az EV3\_HOME-t környezeti változónak és a bin könyvtárat a path-be.
+
+\section{Androidos alkalmazás és kommunikáció}\label{sec:MEGVALOSITAS:android}
