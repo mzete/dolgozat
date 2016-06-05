@@ -1,0 +1,13 @@
+package protobuf;
+option java_package = "app.cs.ubb.edu.ev3.protobuf";
+option java_outer_classname = "DataProtos";
+
+message Data {
+
+	required int32 left = 1;
+	required int32 right = 2;
+	required float forward = 3;
+	required float speed = 4;
+	required float angle = 5;
+	required bool client = 6; 
+}
