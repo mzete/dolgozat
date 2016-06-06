@@ -17,3 +17,15 @@ A $K_{P}$ befolyásolja a szabályzó érzékenységét, instabilitást okozhat.
 A $K_{I}$ erősítő esetén figyelembe kell venni, hogy az integrált tag folytonosan nő és a túl nagy érték túllendülést eredményez. 
 
 A $K_{D}$ a hiba változásának mértékét határozza meg. Amennyiben az aktuális és előző hiba közti különbség nagy, hirtelen változást idéz elő a szabályzó kimenetén. A derivált szerepe, hogy csökkentse a kimenet hirtelen változását, megakadályozva a hirtelen sebesség növekedést. Magas erősítés okozhat instabilitási problémákat.
+
+A \ref{pidFig} ábrán látható a PID szabályzó tagjainak változása. Az $I$ tag domináns a $P$ illetve $D$ tagokkal szemben, látható hogy az integrált tag folyamatosan növekszik. Annak érdekében, hogy túllendülést okozzon az integrált, a derivált tagnak kell ellensúlyozza.
+
+A $P$ tag az előbb említett két tag nagysága között változik. E tag esetén a túl nagy oszcilláció azt idézné elő, hogy a robot hirtelen reagálna az eldőlésre ezért átlendítené ellentétes irányba annyira, hogy eldőlne. Ezzel ellentétbe, a kisebb oszcilláció hatására megfigyelhető lenne a roboton, hogy a vártnál később reagál az egyensúly korrigálására és ebben az esetben is eldőlne.
+
+\begin{figure}[!htb]
+	\begin{center}
+		\includegraphics[width=1.0\linewidth]{images/pid.eps}
+	\end{center}
+	\caption{PID tagok egyensúlyi állapotban}
+	\label{pidFig}
+\end{figure}
