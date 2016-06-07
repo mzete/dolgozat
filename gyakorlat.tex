@@ -106,7 +106,23 @@ A Google Protocol Buffers használatához létre kell hozzunk egy \texttt{.proto
 
 \section{Egyensúlyozási problémái}\label{sec:MEGVALOSITAS:pidModositas}
 
-%hunor dolgozatanak a tovabfejlesztese
+Gilyen Hunor által elkészített licensz-dolgozat során, megépült a kétkerekű LEGO MINDSTORMS EV3 Gyro Boy, amely képes egy helyben megtartani az egyensúlyi állapotát. E cél megvalósítására a PID szabályzót implementálta le Java-ban.
+
+A dolgozat során az általa elkészített projektet vettük alapnak és ebből indultunk ki, hogy megvalósítsuk négy irányba való elmozdulást úgy, hogy megtartsa közbe az egyensúlyi állapotát.
+
+Az általa definiált projekt struktúra nem volt előnyös számunkra. Egy központi osztálya volt, amelyben definiált egy belső osztályt. Ezen osztályon belül megvalósította magát az egyensúlyozást a PID szabályzó által és ez az osztály implementálta a \texttt{Runnable} interfészt. Ezen kívül létrehozott két modell osztályt a szenzorok által kapott értékek eltárolására. A program indulásakor létrehozott egy \texttt{Thread} objektumot, amelynek átadta az egyensúlyozást megvalósító osztály példányát. 
+
+A projekt struktúrájának javítása érdekében külön választottuk a PID szabályzó algoritmust és a giroszkóp szenzor olvasásához szükséges metódusokat. E két osztály külön szálon indítjuk el. A szinkronizálást a \texttt{CyclicBarrier} segítségével valósítottuk meg, amely a Java 7 része. A példányosításakor (\ref{barrier} ábrán látható) megadható, hogy hány szálal szeretnénk dolgozni. Szinkronizálás során a \texttt{await} metódus hívással a szál várakozik mindaddig míg az összes szál nem hívja meg ez a metódus. Mikor egy szál meghívja ez a metódus akkor a \texttt{CyclicBarrier} növeli a számlálóját és mindaddig várakozik a szál amíg ez a számláló nem éri el a példányosításkor megadott értéket. Valamint létrehoztunk egy központi osztályt, amely feladata a szálak kezelése és a szenzorokhoz illetve motorokhoz való hozzáférést biztosító objektumok példányosítása.
+
+\begin{lstlisting}[label=barrier, caption= CyclicBarrier példányosítása , language=Java]
+
+CyclicBarrier barrier = new CyclicBarrier(2);
+
+\end{lstlisting}
+
+Kezdetben az volt az elképzelésünk, hogy külön válasszuk a jobb és bal motort irányító algoritmust, ezáltal egymástól függetlené téve őket. Ehhez szükséges volt a szabályzó algoritmus általánosítása illetve a két motor szinkronizálásának bevezetése. Mivel külön szálon fut a giroszkóp kezelése és külön-külön a két motort szabályzó algoritmusa ezért minden iterációban a szenzorok leolvasását egyszerre kellet végrehajtsák, különben más-más értékekkel dolgoztak, mely egyensúly vesztést okozott. Ehhez szükséges volt az előbb létrehozott \texttt{CyclicBarrier} konstruktorának átadott értékét növelése eggyel, mivel most már külön-külön kérte le a giroszkóp szenzor értékét a jobb és bal motorokat vezérlő szálak és emelet még egy újabb \texttt{CyclicBarrier} bevezetése szükséges, hogy ez a két szál egymást is bevárják iterációnként. E módosítást követően a robot képtelen volt az egyensúly megtartására.
+
+
 
 
 
