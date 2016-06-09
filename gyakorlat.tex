@@ -120,7 +120,29 @@ CyclicBarrier barrier = new CyclicBarrier(2);
 
 \end{lstlisting}
 
-Kezdetben az volt az elképzelésünk, hogy külön válasszuk a jobb és bal motort irányító algoritmust, ezáltal egymástól függetlené téve őket. Ehhez szükséges volt a szabályzó algoritmus általánosítása illetve a két motor szinkronizálásának bevezetése. Mivel külön szálon fut a giroszkóp kezelése és külön-külön a két motort szabályzó algoritmusa ezért minden iterációban a szenzorok leolvasását egyszerre kellet végrehajtsák, különben más-más értékekkel dolgoztak, mely egyensúly vesztést okozott. Ehhez szükséges volt az előbb létrehozott \texttt{CyclicBarrier} konstruktorának átadott értékét növelése eggyel, mivel most már külön-külön kérte le a giroszkóp szenzor értékét a jobb és bal motorokat vezérlő szálak és emelet még egy újabb \texttt{CyclicBarrier} bevezetése szükséges, hogy ez a két szál egymást is bevárják iterációnként. E módosítást követően a robot képtelen volt az egyensúly megtartására.
+Kezdetben az volt az elképzelésünk, hogy külön válasszuk a jobb és bal motorokat irányító algoritmust, ezáltal egymástól függetlené téve őket. Ehhez szükséges volt a szabályzó algoritmus általánosítása illetve a két motor szinkronizálásának megoldása. Mivel külön szálon fut a giroszkóp kezelése és külön-külön a két motort szabályzó algoritmusa ezért minden iterációban a giroszkóp leolvasását egyszerre kellet végrehajtsák, különben más-más értékekkel dolgoztak, mely egyensúly vesztést okozott. Ehhez szükséges volt az előbb létrehozott \texttt{CyclicBarrier} konstruktorának átadott értékét növelése eggyel, mivel most már külön-külön kérte le a giroszkóp szenzor értékét a jobb és bal motorokat vezérlő szál. Emelet még egy újabb \texttt{CyclicBarrier} bevezetése volt szükséges, hogy a motorokat is szinkronizáljuk egymáshoz. E módosítást követően a robot váratlan időn belül elvesztette az egyensúlyát.
+
+Mivel a robot LCD kijelzője nem megfelelő méretű, hogy tesztelésre alkalmas adatokat jelenítsünk meg futás közbe ezért szükség van a fájlba való kiirtásra és ezt követően az értékek értelmezése Matlab segítségével. E módszer igen csak időigényes és nehézkes, mivel a túl sok fájlba való írás leterheli a robot processzorát és növelődik egy iterációnak a végrehajtási ideje. Az iterációnként eltelt idő szerint számítsuk a robot sebességét és PID integrált illetve derivált tagját is. Tehát ha jelentősen tolódik egy iteráció lefutási ideje akkor az kritikusan befolyásolja az algoritmus működését.
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=1.0\linewidth]{images/balTacho.eps}
+	\end{center}
+	\caption{Bal motor fordulatszám összehasonlítása a bal és jobb motor fordulatszám átlagával}
+	\label{balTachoFig}
+\end{figure}
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=1.0\linewidth]{images/jobbTacho.eps}
+	\end{center}
+	\caption{Jobb motor fordulatszám összehasonlítása a bal és jobb motor fordulatszám átlagával}
+	\label{jobbTachoFig}
+\end{figure}
+
+A szinkronizálás helyességének tesztelése után, a PID szabályzó bemeneti hibáját meghatározó négy komponensnek a kiszámítását teszteltük. Gilyen Hunor által készített algoritmus esetében a robot sebességének és pozíciójának kiszámításakor átlagolva volt a két motor fordulatszáma. Esetünkben ez módosult és elhagytuk az átlagolást. Ennek eredményeként amikor egy adott iterációban minimális különbség lépet fel a két motor fordulatszáma között akkor ez nagymértékben befolyásolta sebesség és pozíció kiszámítását. Mivel a fordulatszám különbözött ezért a sebesség és a pozíció is. E különbség iterációnként növekedett. A sebesség és a pozíció a PID bementi hibájának a két komponense ezért a kimeneti érték is különbözött, amely meghatározta a motorokra adott erő nagyságát. Tehát a motorok által leadott erő különbözött és ezért a robot elvesztette egyensúlyát.
+
+E probléma megoldására próbáltuk súlyozni az aktuális és az azelőtti mért fordulatszámot, hogy megközelítsük az átlagolt fordulatszámot. Az így megkapott értékel számoltuk ki a robot sebességét és pozícióját. A legjobb megközelítését, amelyet az átlagolt értékkel hasonlítottunk össze az látható a \ref{balTachoFig} és a \ref{jobbTachoFig} ábrákon. A kék szín jelöli a adott motor fordulatszámát illetve a zöld jelöli a motorok az átlagolt fordulatszámot. De még ez a közelítés sem volt elegendő, hogy a robot ne veszítse el az egyensúlyát.
 
 
 
