@@ -1,53 +1,55 @@
 \chapter{LEGO} \label{ch:ROBOT}
 
 \begin{osszefoglal}
-A fejezetben, bemutatásra kerül a LEGO \cite{lego} megalakulása, fejlődése. E mellet sor kerül a LEGO MINDSTORMS által kifejlesztett technológiák bemutatása, amelyek közül egy pár felhasználásra kerül a továbbiakban.
+A fejezetben, bemutatásra kerül a LEGO megalakulása, fejlődése. E mellet sor kerül a LEGO MINDSTORMS által kifejlesztett technológiák bemutatására, amelyek közül a giroszkóp szenzor és a nagy motorok felhasználásra kerülnek a továbbiakban.
 \end{osszefoglal}
 
 \section{LEGO megalakulása}\label{sec:ROBOT:lego}
-A LEGO története 1932-ben kezdődött, Ole Kirk Christiansen\footnote{\href {http://lego.wikia.com/wiki/Ole\_Kirk\_Christiansen}{http://lego.wikia.com/wiki/Ole\_Kirk\_Christiansen}} asztalos vállalkozást alapított Dánia, Billund nevezetű falujában, amely a fa játékok gyártásával foglakozott. 1934-ben vette fel a cég a LEGO nevet, amely a LEG GODT Dán szóból ered. 1947 után kezdtek el műanyagból előállítani játékokat amelyek fő célja az volt, hogy könnyedén egymásba illeszthetőek illetve szétszedhetőek legyenek. Az alapító fia Godtfred Christian lett az igazgató 1958-ban, ekkor alakult meg a ma ismert LEGO vállalat és vezetésével fellendült a cég. Az első számítógép által vezérelt robot 1986-ban jelent meg, amelyet követően 1988-ban a LEGO és az MIT \texttt{(Massachusetts Institute of Technology)} együttműködésével elkezdődött az "inteligens tégla" fejlesztése, mely lehetőséget ad a programozhatóságra.
+A LEGO~\cite{lego}\cite{legoHistory} története 1932-ben kezdődött, Ole Kirk Christiansen\footnote{\href {http://lego.wikia.com/wiki/Ole\_Kirk\_Christiansen}{http://lego.wikia.com/wiki/Ole\_Kirk\_Christiansen}} asztalos vállalkozást alapított Dánia, Billund nevezetű falujában, amely a fa játékok gyártásával foglakozott. 1934-ben vette fel a cég a LEGO nevet, amely a LEG GODT Dán szóból ered. 1947 után kezdtek el műanyagból előállítani játékokat amelyek fő célja az volt, hogy könnyedén egymásba illeszthetőek illetve szétszedhetőek legyenek. Az alapító fia Godtfred Christian lett az igazgató 1958-ban, ekkor alakult meg a ma ismert LEGO vállalat és vezetésével fellendült a cég. Az első számítógép által vezérelt robot 1986-ban jelent meg, amelyet követően 1988-ban a LEGO és az MIT \texttt{(Massachusetts Institute of Technology)} együttműködésével elkezdődött az "inteligens tégla" fejlesztése, mely lehetőséget ad a programozhatóságra.
 
 \section{LEGO MINDSTORMS}\label{sec:ROBOT:mindstorms}
 A LEGO  első játéka amit forgalmazott Ole Kirk Christians vezetésével a fából készült "LEGO Duck" évekkel később megjelentek a műanyag játékok. Ma már világszerte ismert a LEGO építőjáték, egymással összeilleszthető, kombinálható elemeket tartalmaz így szinte bármi megépíthető belőle és rendkívül hasznos oktatási eszköz. 
 
-A LEGO MINDSTORMS, egy programozható robotikai építőkészlet. Lehetőséget ad, hogy megépítsd, programozd és irányítsd a robotot.
-1998-ban jelent meg az első generáció az RXC \texttt{(Robotic Command eXplorers)}, akkoriban nagy előrelépés volt mivel, teljesen autonóm, képes számítógép nélkül is működni de mára már elavult. Az évek során sokat fejlődött és ma már egyre több oktatási intézmény használja a robotika oktatásban.
+A LEGO MINDSTORMS~\cite{mindstormsHistory}, egy programozható robotikai építőkészlet. Lehetőséget ad, hogy megépítsd, programozd és irányítsd a robotot.
+1998-ban jelent meg az első generáció az RXC \texttt{(Robotic Command eXplorers)}, akkoriban nagy előrelépés számított mivel, teljesen autonóm. Képes számítógép nélkül is működni de mára már nem gyakori a használata. Az évek során sokat fejlődött és ma már egyre több oktatási intézmény használja a robotika oktatásban.
 
 \subsection{RXC}
-
-Az RXC amelyet a \ref{fig:RXC} ábra szemlélteti, az első generációs LEGO MINDSTORMS. Ma már nem igen használatos, elavult programozható vezérlőegység, mivel csupán 8 bites mikrokontroller és 32 Kbyte RAM-al rendelkezik. Tartalmaz három szenzor és három motor csatlakozó portot. Ezek mellet egy LCD kijelzőt amin látható az akkumulátor töltöttségi szintje, a bemeneti és kimeneti portok állapota illetve egyéb információk megjelenítésere is alkalmas.
+Az RXC~\cite{rxcAttribution} amelyet a \ref{fig:RXC} ábra szemlélteti, az első generációs LEGO MINDSTORMS. Ma már nem igen használatos, elavult programozható vezérlőegység, mivel csupán 8 bites mikrokontroller és 32 Kbyte RAM-al rendelkezik. Tartalmaz három szenzor és három motor csatlakozó portot. Ezek mellet egy LCD kijelzőt amin látható az akkumulátor töltöttségi szintje, a bemeneti és kimeneti portok állapota illetve egyéb információk megjelenítésere is alkalmas. A kapacitásának ellenére számos projektben felhasználták, ilyenekben mint a \texttt{Brick Sorter}\footnote{\href {http://robotsquare.com/2012/02/15/brick-sorter-4/}{http://robotsquare.com/2012/02/15/brick-sorter-4/}} mely szín szerint szortírozza az adott elemeket, \texttt{RCX Remote Control}\footnote{\href {http://robotsquare.com/2012/02/14/rcx-remote-control/}{http://robotsquare.com/2012/02/14/rcx-remote-control/}} mely két RCX vezérlőegység közti kommunikációval irányítja a robot.
 
 \begin{figure}[!htb]
-	\label{fig:RXC}
 	\centering
 	\pgfimage[width=0.4\linewidth]{images/RXC}
 	\caption{RXC brick}
+	\label{fig:RXC}
 \end{figure}
 
 \subsection{NXT}
-A második generáció a \ref{fig:NXT} ábrán látható, az NXT, 2006-ban jelent meg illetve az NXT 2.0 2009-ben, amely több építőelemet és szenzort tartalmaz. Több mindenben különbözik az NXT az RXC-hez képest. Szembetűnő esztétikai változások történtek, javítottak a kapacitáson, növelték a portok számát és megjelentek a szervomotorok.
+A második generáció a \ref{fig:NXT} ábrán látható, az NXT~\cite{nxtAttribution}\cite{nxtVsEv3}, 2006-ban jelent meg illetve az NXT 2.0 2009-ben, amely több építőelemet és szenzort tartalmaz. Több mindenben különbözik az NXT az RXC-hez képest. Szembetűnő esztétikai változások történtek, javítottak a kapacitáson, növelték a portok számát és megjelentek a szervomotorok.
 
-Az NXT tartalmaz négy szenzort, három motor csatlakozót és egy 2.0 USB portot. Beépített bluetooth kommunikációs adatperrel rendelkezik, megjelent a grafikus kijelző és tartalmazott egy 8Khz hangszórót. Az NXT 32 bites AMTEL ARM7 mikrokontrollerrel, 256 Kbyte flash memóriával és 64 Kbyte RAM-al rendelkezik.
+Az NXT tartalmaz négy bemeneti portot, három kimeneti portot és egy 2.0 USB portot. Beépített bluetooth kommunikációs adatperrel rendelkezik, megjelent a grafikus kijelző és tartalmazott egy 8Khz hangszórót. Az NXT 32 bites AMTEL ARM7 mikrokontrollerrel, 256 Kbyte flash memóriával és 64 Kbyte RAM-al rendelkezik. Az NXT csomaggal már komplexebb projektek is készültek mint az RXC-vel. Megemlíteném a \texttt{Segway with Robot Driver}\footnote{\href {http://robotsquare.com/2012/09/04/segway-with-robot-driver/}{http://robotsquare.com/2012/09/04/segway-with-robot-driver/}} című projektet, amely megvalósított egy olyan robot amely irányítja a szintén NXT vezérlőegység által működtetett Segway-t.
 
 \begin{figure}[!htb]
-	\label{fig:NXT}
 	\centering
 	\pgfimage[width=0.4\linewidth]{images/NXT}
 	\caption{NXT brick}
+	\label{fig:NXT}
 \end{figure}
 
 \subsection{EV3}
-A harmadik generáció, az EV3 2013-ban jelent meg, a \ref{fig:EV3} ábra szemlélteti. Az "EV" evolúciót jelenti és a 3, hogy harmadik generáció. A legfejeltebb LEGO MINDSTROMS programozható építőelem amely kezeli a motorokat, szenzorokat és lehetőséget ad Wi-Fi-n vagy Bluetooth-on keresztül való kommunikációra, ezért is választottuk ezt a generációt.
+
+A harmadik generáció, az EV3~\cite{ev3Attribution}\cite{nxtVsEv3} 2013-ban jelent meg, a \ref{fig:EV3} ábra szemlélteti. Az "EV" evolúciót jelenti és a 3, hogy harmadik generáció. A legfejeltebb LEGO MINDSTROMS programozható építőelem amely kezeli a motorokat, szenzorokat és lehetőséget ad Bluetooth-on keresztül való kommunikációra.
 
 Az EV3 egy ARM9 nevű processzorral van felszerelve, amely 300 Mhz, 16 Mbyte flash memóriával és 64 Mbyte RAM-al rendelkezik. A Linux alapú operációs rendszere nagyban segíti a programozhatóságát. Egy 2.0 mini USB PC port van a számítógéppel való kommunikációhoz, aminek átviteli sebessége 480 Mbit/s, az SD kártya olvasója 32 Gbyte-ot ismer fel. Tartalmaz egy USB portot amely lehetővé teszi, hogy használjunk Wi-Fi dongle-t, ezáltal megkönnyíti a programok kitelepítését, fájlok kezelését és lehetséges a kommunikáció okos készülékekkel is.
 
-Az NXT-hez képest sokat fejlődött, nagyobb a kapacitása, lehetőség van Wi-Fi és SD kártya használatára. Ezek mellet négy szenzor port van három helyett és négy motor csatlakozó port. Nagyobb LCD kijelzőt raktak és a felületén hat gomb van négy helyett, könnyítve az operációs rendszer menüjének kezelését.
+Az NXT-hez képest sokat fejlődött, nagyobb a kapacitása, lehetőség van Wi-Fi és SD kártya használatára. Ezek mellet négy szenzor port van három helyett és négy motor csatlakozó port. Nagyobb LCD kijelzőt raktak és a felületén hat gomb van négy helyett, könnyítve az operációs rendszer menüjének kezelését.\cite{nxtVsEv3}
+
+Mivel a LEGO MINDSTORMS generációk közül a legfejlettebb ezért a projekt által felhasznált vezérlőegység az EV3.
 
 \begin{figure}[!htb]
-	\label{fig:EV3}
 	\centering
 	\pgfimage[width=0.4\linewidth]{images/EV3}
 	\caption{EV3 brick}
+	\label{fig:EV3}
 \end{figure}
 
 
@@ -62,21 +64,21 @@ A nagy motorok sebessége 160-170 rmp, forgatónyomaték 20 N/cm és ha blokkolt
 A robot mozgatását a nagy motorok segítségével fogjuk elérni, ha bár lassabbak mint a közepes motorok de nagyobb a nyomatékuk és a precizitásuk azonos.
 
 \begin{figure}[!htb]
-	\label{fig:lMotor}
 	\centering
-	\pgfimage[width=0.4\linewidth]{images/large_motor}
+	\minipage{0.4\textwidth}
+	\pgfimage[width=0.9\linewidth]{images/large_motor}
 	\caption{Nagy motor}
+	\label{fig:lMotor}
+	\endminipage
+	\minipage{0.4\textwidth}
+	\pgfimage[width=0.8\linewidth]{images/medium_motor}
+	\caption{Közepes motor}
+	\label{fig:mMotor}
+	\endminipage
 \end{figure}
 
 \subsection{Közepes motor}
 A közepes motor, amely a \ref{fig:mMotor} ábrázol, tulajdonsága megegyezik a nagy motorjaival. Ugyancsak tartalmaz forgásérzékelőt és lehetséges a helyzetmeghatározás 1 fok eltéréssel, viszont alacsonyabb terhelésre tervezték, forgatónyomatéka 8 N/cm, ha blokkolt állapotba kerül akkor a nyomatéka 12 N/cm és a sebessége 240-250 rmp.
-
-\begin{figure}[!htb]
-	\label{fig:mMotor}
-	\centering
-	\pgfimage[width=0.4\linewidth]{images/medium_motor}
-	\caption{Közepes motor}
-\end{figure}
 
 \section{Ev3 szenzorok}\label{sec:ROBOT:szenzorok}
 
@@ -87,10 +89,10 @@ Az NXT csomagban számos szenzor megtalálható, ilyenek mint az érintés, hang
 A digitális színszenzor, amely a \ref{fig:colorSensor} ábrázol, hét különböző színt ismer fel. A színfelismerő funkcionalitásán kívül mérhető vele a fényvisszaverődés erőssége vagy a környezeti fény intenzitását. E három üzemmód lehető teszi a felhasználóknak, hogy akár kövessen egy fekete vonalat vagy megkülönböztetésen szín szerint tárgyakat és még sok más felhasználási lehetősége van.
 
 \begin{figure}[!htb]
-	\label{fig:colorSensor}
 	\centering
 	\pgfimage[width=0.4\linewidth]{images/color_sensor}
 	\caption{Szín szenzor}
+	\label{fig:colorSensor}
 \end{figure}
 
 \subsection{Giroszkóp szenzor}
@@ -101,15 +103,15 @@ A giroszkóp három módban használható. Mérhető az elfordulási szög fokba
 
 \begin{figure}[!htb]
 	\centering
-	\minipage{0.6\textwidth}
-	\label{fig:gyroSensor}
-	\pgfimage[width=0.5\linewidth]{images/gyro_sensor}
+	\minipage{0.4\textwidth}
+	\pgfimage[width=0.8\linewidth]{images/gyro_sensor}
 	\caption{Giroszkóp szenzor}
+	\label{fig:gyroSensor}
 	\endminipage
 	\minipage{0.6\textwidth}
-	\label{fig:gyroFok}
 	\pgfimage[width=0.4\linewidth]{images/gyro_fok}
 	\caption{A giroszkóp szögelfordulási mutatója}
+	\label{fig:gyroFok}
 	\endminipage
 \end{figure}
 
@@ -117,20 +119,20 @@ A giroszkóp három módban használható. Mérhető az elfordulási szög fokba
 Az analóg nyomásérzékelője egy piros gombbal van felszerelve ami látható a \ref{fig:touchSensor} ábrán. Funkcionalitása nem túl bonyolult viszont annál hasznosabb. Érzékeli a gomb lenyomását illetve felszabadulását, amelyet egy integrált számlálóval segítségével nyomon lehet követni. 
 
 \begin{figure}[!htb]
-	\label{fig:touchSensor}
 	\centering
 	\pgfimage[width=0.4\linewidth]{images/touche_sensor}
 	\caption{Nyomásérzékelő}
+	\label{fig:touchSensor}
 \end{figure}
 
 \subsection{Ultrahang szenzor}
 A digitális ultrahang szenzor látható a \ref{fig:ultrasonicSensor} ábrán, amely +/- 1 cm hibával meghatározza, hogy milyen távolságra van az előtte lévő tárgy. A hatótávolsága 250 cm és működése a magas frekvencia kibocsátására  alapszik. Számolja az előtte lévő tárgyról visszaverődő frekvenciák érkezésének idejét, ezáltal határozza meg a távolságot. Az akadály pontos irányának meghatározása úgy lehetséges ha több mérést végzünk oldal mozgással. Így lehetőség van, hogy kiszámoljuk az akadály irányát.
 
 \begin{figure}[!htb]
-	\label{fig:ultrasonicSensor}
 	\centering
 	\pgfimage[width=0.4\linewidth]{images/ultrasonic_sensor}
 	\caption{Ultrahang szenzor}
+	\label{fig:ultrasonicSensor}
 \end{figure}
 
 \subsection{Infravörös szenzor}
@@ -139,13 +141,38 @@ A digitális infravörös szenzor látható a \ref{fig:infraSensor} ábrán, ame
 \begin{figure}[!htb]
 	\centering
 	\minipage{0.4\textwidth}
-	\label{fig:infraSensor}
 	\pgfimage[width=0.5\linewidth]{images/infra_sensor}
 	\caption{Infravörös szenzor}
+	\label{fig:infraSensor}
 	\endminipage
 	\minipage{0.4\textwidth}
-	\label{fig:beacon}
 	\pgfimage[width=0.5\linewidth]{images/beacon}
 	\caption{Infravörös jeladó}
+	\label{fig:beacon}
 	\endminipage
 \end{figure}
+
+\subsection{Az egyensúlyozó robot felépítése}
+
+A kétkerekű egyensúlyozó robot, amely a \ref{fig:gyro_boy} ábrán látható a Gyro Boy\footnote{\href{http://robotsquare.com/wp-content/uploads/2013/10/45544\_gyroboy.pdf}{http://robotsquare.com/wp-content/uploads/2013/10/45544\_gyroboy.pdf}} modell alapján készült el, mely az EV3 csomagból építhető meg. Szimmetrikus súlyelosztása révén elősegíti az egyensúly megtartását. Megemlítenék még más egyensúlyozó robotot is, az NXTway-GS\footnote{\href{http://lejos-osek.sourceforge.net/NXTway-GS\_Building\_Instructions.pdf}{http://lejos-osek.sourceforge.net/NXTway-GS\_Building\_Instructions.pdf}} modellt, amely NXT csomaggal valósítható meg, illetve a Rover Kit\footnote{\href{http://www.sainsmart.com/sainsmart-balancing-robot-kit.html}{http://www.sainsmart.com/sainsmart-balancing-robot-kit.html}}, amely mikrovezérlő által irányított egyensúlyozó robot.
+
+A robot főbb komponensei közé sorolható az EV3 vezérlőegység, giroszkóp szenzor és a két nagy szervomotor. A motorok egy tengelyen helyezkednek, amelyekre fel vannak erősítve a kerekek. A kerekek átmérője 55mm, ezt az értéket felhasználjuk a pozíció illetve a sebebesség kiszámolásakor. A giroszkóp szenzor egy tengelyen mentén mér, a robot központi részén helyezkedik el, közel az egyensúlyi pontjához.
+
+\begin{figure}[!htb]
+	\centering
+	\pgfimage[width=0.4\linewidth]{images/gyro_boy}
+	\caption{Projekt során felhasznált robot}
+	\label{fig:gyro_boy}
+\end{figure}
+
+A robothoz tartozik egy állvány, amely a kiinduló pontja és egyensúlyba tartja amíg az egyensúlyozást megvalósító algoritmus elindul. 
+
+Az egyensúlyozás megvalósítására az algoritmus a PID szabályzót használja fel, amely egy zárt ciklusos rendszer. A PID szabályzó bemeneti értéke a hiba és a kimeneti a motorokra leadott erő.
+
+A hibát az elvárt érték és az aktuális érték különbségéből kapjuk meg. Esetünkben, a kiindulási pont a robot egyensúlyi állapota, azaz a robot dőlési szöge, szög változásának a sebessége, a robot sebessége és a pozíciója nulla, amely az elvárt érték. A szög és szög változásának sebességét a giroszkóp szenzor által kérjük le. A leJOS firmware több módot is biztosít a giroszkóp használatára. Esetünkbe a \texttt{rate} módot használjuk, amely a szög változásának a sebességét méri. Mérések esetén, mivel a szenzor nem mér pontosan ezért többször mintavételezünk és ezeket átlagoljuk, hogy kiszűrjük a zajokat. Az így megkapott szög változásának sebességéből kiszámítható a dőlési szög a következő képlettel: $$\varphi=\omega \cdot t,$$ ahol az $\omega$ jelöli a szög változásának sebességét illetve a $t$ az eltelt időt.
+
+A szervomotorok esetén lekérhetjük a fordulat számát, amelyet a motorba beépített szenzor egy számlaló segítségével számol. A két motor fordulatszámát átlagoljuk, ezáltal kiszűrjük a zajokat. Az így megkapott értékkel átalakítjuk szögbe majd kiszámítjuk a robot sebességét valamint pozícióját.
+
+A sebességet és a pozíciót a következő képletekkel határozzuk meg:$$v=\frac{\alpha-\alpha'}{t}\cdot d$$ $$x=\alpha\cdot d, $$ ahol az $\alpha$ jelöli a motor elfordulási szögét, az $\alpha'$ az előző időpillanatban a motor elfordulási szögét, a $t$ az eltelt időt, a $d$ a kerék átmérőjét, a $v$ a robot sebességét illetve az $x$ robot pozícióját.
+
+Az előbbiekben kiszámított négy értéket kivonjuk a nekik megfelelő elvárt értékekből, amelyek nullák. Ezt követően konstansok által súlyozva majd összeadva az értékeket megkapjuk a PID bemenetét vagyis a hibát.

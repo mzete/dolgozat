@@ -3,8 +3,13 @@
 E fejezet célja, hogy bemutassa a PID szabályzó algoritmus működését. E mellet sorkelűr az egyensúlyozás működésének leírására, valamint hogy miként lehet felhasználni ez esetbe a PID szabályzó algoritmust.
 \end{osszefoglal}
 
+
+
 \section{PID szabályzó algoritmus}\label{sec:EGYENSULY:pid}
-A PID \texttt{(Proportional Integral Derivate)} elterjedt algoritmus az ipari szabályzó körökben köszönhetően a viszonylag egyszerű félépítéséért és a könnyen kezelhetőségéért. Számos felhasználási lehetősége van, ilyenek a nyomás, hőmérséklet, sebesség szabályozás.
+
+A szabályzó rendszereket kétféleképpen különíthetjük el, nyílt illetve zárt ciklusos.
+
+A PID \texttt{(Proportional Integral Derivate)} elterjedt algoritmus az ipari szabályzó körökben köszönhetően a viszonylag egyszerű félépítésének és a könnyen kezelhetőségének. Számos felhasználási lehetősége van, ilyenek a nyomás, hőmérséklet, sebesség szabályozás.
 
 A PID, mint a nevéből is látható három tagból tevődik össze: P \texttt{(Proportional)} proporcinális tag, I \texttt{(Integral)} a hibák integrált tagja és a D \texttt{(Derivate)} a hibák időbeli változásának derivált tagja. Több változata is van, azok az esetek mikor nem valósulnak meg az előbb felsoroltak mindegyike, ilyenkor beszélünk P, PI, PD szabályokról.
 

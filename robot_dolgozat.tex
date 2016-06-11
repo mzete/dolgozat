@@ -51,12 +51,12 @@ Assist prof. dr. Hunor Jakab
 
 \begin{abstractEN}
 	
-A szakdolgozat célja egy egyensúlyozó, kétkerekű MINDSTORMS EV3 robot irányításának megoldása hálózaton keresztül, telefonos alkalmazás segítségével.Ennek a célnak az eléréséhez szükséges két nagyobb feladat elvégzése. A kommunikációt megvalósító telefonos alkalmazás illetve egyensúly megtartása irányítás alatt.
+A szakdolgozat célja egy egyensúlyozó, kétkerekű MINDSTORMS EV3 robot irányításának megoldása hálózaton keresztül, telefonos alkalmazás segítségével. Ennek a célnak az eléréséhez szükséges két nagyobb feladat elvégzése. A kommunikációt megvalósító telefonos alkalmazás elkészítése illetve az egyensúlyba tartó algoritmus implementálása.
 
-Az alkalmazás és az egyensúlyozási algoritmus Java-ban íródott. A robot irányításáért felelős az EV3 vezérlőegység, amelyen Linux alapú leJOS keretrendszer fut. A robot PID (\texttt{Proportional Integral Derivative}) kontroller alkalmazásával és giroszkóp szenzor használatával marad egyensúlyban. Ahhoz hogy egyensúlyba maradjon a robot sebessége, dőlési szöge, szög változásának a sebessége 0-hoz kell közelítsen illetve annak az érdekében, hogy egy helyebe maradjon pozíciója is 0-hoz kell tartson.
-A PID bemeneti értékét az aktuális hiba adja meg, amelyet négy különböző komponens határozz meg: szög, szögsebesség, robot sebesség és pozíció. A komponensek megfelelő módosítása lehetővé teszi a robot mozgásának manipulálását. 
+Az alkalmazás és az egyensúlyozást megvalósító algoritmus Java-ban íródott. A robot irányításáért felelős az EV3 vezérlőegység, amelyen Linux alapú leJOS keretrendszer fut. A robot PID (\texttt{Proportional Integral Derivative}) kontroller alkalmazásával és giroszkóp szenzor használatával marad egyensúlyban. Ahhoz hogy egyensúlyba maradjon a robot sebessége, dőlési szöge, szög változásának a sebessége 0-hoz kell közelítsen illetve annak az érdekében, hogy egy helyebe maradjon pozíciója is 0-hoz kell tartson.
+A PID bemeneti értéke a hiba, amely az elvárt érték és az aktuális érték különbsége. Esetünkben mivel 0-t kell közelítsünk annak érdekében, hogy ne veszítse el egyensúlyi állapotát a robot ezért az elvárt érték öröké 0 lesz, vagyis a hibát négy komponens alkotja: a robot dőlési szöge, szögsebessége, a robot sebessége és pozíciója. A komponensek megfelelő módosítása lehetővé teszi a robot mozgásának manipulálását. 
 
-Mobil részre egy telefonos alkalmazást fejlesztettünk, amely hálózaton keresztül kapcsolódik a robothoz és küldi a megfelelő parancsokat. Az alkalmazás és a robot közti kapcsolat létrehozásának megkönnyítésére használjuk az SSDP(\texttt{Simple Service Discovery Protocol}) automatikus kapcsolódást UPnP(\texttt{Universal Plug and Play}) segítségével. 
+Mobil részre egy telefonos alkalmazást fejlesztettünk, amely hálózaton keresztül kapcsolódik a robothoz és küldi a megfelelő parancsokat. Az alkalmazás és a robot közti kapcsolat létrehozásának automatizálására UPnP(\texttt{Universal Plug and Play}) könyvtárat használjuk, amely SSDP(\texttt{Simple Service Discovery Protocol}) protokollt használ.
 
 This work is the result of my own activity. I have neither given nor received unauthorized assistance on this work.
 
