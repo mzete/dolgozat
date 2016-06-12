@@ -1,4 +1,4 @@
-\begin{thebibliography}{8}
+\begin{thebibliography}{9}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -43,6 +43,11 @@ Nxt összehasonlítása az ev3-al, {\natexlab{b}}.
 \newblock URL
   \url{http://botbench.com/blog/2013/01/08/comparing-the-nxt-and-ev3-bricks/}.
 \newblock Utolsó megtekintés dátuma: 2016-05-16.
+
+\bibitem[pro()]{protobuff}
+A google protocol buffers hivatalos oldala.
+\newblock URL \url{https://developers.google.com/protocol-buffers/}.
+\newblock Utolsó megtekintés dátuma: 2016-06-01.
 
 \bibitem[rxc()]{rxcAttribution}
 Az rxc leírása.
