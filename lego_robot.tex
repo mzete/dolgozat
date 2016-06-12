@@ -152,7 +152,7 @@ A digitális infravörös szenzor látható a \ref{fig:infraSensor} ábrán, ame
 	\endminipage
 \end{figure}
 
-\subsection{Az egyensúlyozó robot felépítése}
+\subsection{Az egyensúlyozó robot felépítése}{\label{egyensulySubSec}}
 
 A kétkerekű egyensúlyozó robot, amely a \ref{fig:gyro_boy} ábrán látható a Gyro Boy\footnote{\href{http://robotsquare.com/wp-content/uploads/2013/10/45544\_gyroboy.pdf}{http://robotsquare.com/wp-content/uploads/2013/10/45544\_gyroboy.pdf}} modell alapján készült el, mely az EV3 csomagból építhető meg. Szimmetrikus súlyelosztása révén elősegíti az egyensúly megtartását. Megemlítenék még más egyensúlyozó robotot is, az NXTway-GS\footnote{\href{http://lejos-osek.sourceforge.net/NXTway-GS\_Building\_Instructions.pdf}{http://lejos-osek.sourceforge.net/NXTway-GS\_Building\_Instructions.pdf}} modellt, amely NXT csomaggal valósítható meg, illetve a Rover Kit\footnote{\href{http://www.sainsmart.com/sainsmart-balancing-robot-kit.html}{http://www.sainsmart.com/sainsmart-balancing-robot-kit.html}}, amely mikrovezérlő által irányított egyensúlyozó robot.
 
@@ -171,8 +171,15 @@ Az egyensúlyozás megvalósítására az algoritmus a PID szabályzót használ
 
 A hibát az elvárt érték és az aktuális érték különbségéből kapjuk meg. Esetünkben, a kiindulási pont a robot egyensúlyi állapota, azaz a robot dőlési szöge, szög változásának a sebessége, a robot sebessége és a pozíciója nulla, amely az elvárt érték. A szög és szög változásának sebességét a giroszkóp szenzor által kérjük le. A leJOS firmware több módot is biztosít a giroszkóp használatára. Esetünkbe a \texttt{rate} módot használjuk, amely a szög változásának a sebességét méri. Mérések esetén, mivel a szenzor nem mér pontosan ezért többször mintavételezünk és ezeket átlagoljuk, hogy kiszűrjük a zajokat. Az így megkapott szög változásának sebességéből kiszámítható a dőlési szög a következő képlettel: $$\varphi=\omega \cdot t,$$ ahol az $\omega$ jelöli a szög változásának sebességét illetve a $t$ az eltelt időt.
 
-A szervomotorok esetén lekérhetjük a fordulat számát, amelyet a motorba beépített szenzor egy számlaló segítségével számol. A két motor fordulatszámát átlagoljuk, ezáltal kiszűrjük a zajokat. Az így megkapott értékkel átalakítjuk szögbe majd kiszámítjuk a robot sebességét valamint pozícióját.
+A szervomotorok esetén lekérhetjük a fordulat számát, amelyet a motorba beépített szenzor egy számlaló segítségével számol. A két motor fordulatszámát átlagoljuk, ezáltal kiszűrjük a zajokat. Az így megkapott értéket átalakítjuk szögbe majd kiszámítjuk a robot sebességét valamint pozícióját.
 
-A sebességet és a pozíciót a következő képletekkel határozzuk meg:$$v=\frac{\alpha-\alpha'}{t}\cdot d$$ $$x=\alpha\cdot d, $$ ahol az $\alpha$ jelöli a motor elfordulási szögét, az $\alpha'$ az előző időpillanatban a motor elfordulási szögét, a $t$ az eltelt időt, a $d$ a kerék átmérőjét, a $v$ a robot sebességét illetve az $x$ robot pozícióját.
+A sebességet és a pozíciót a következő képletekkel határozzuk meg:
+\begin{equation}
+	v=\frac{\alpha-\alpha'}{t}\cdot d
+\end{equation}
+\begin{equation}
+	x=\alpha\cdot d,
+\end{equation}
+ahol az $\alpha$ jelöli a motor elfordulási szögét, az $\alpha'$ az előző időpillanatban a motor elfordulási szögét, a $t$ az eltelt időt, a $d$ a kerék átmérőjét, a $v$ a robot sebességét illetve az $x$ robot pozícióját.
 
 Az előbbiekben kiszámított négy értéket kivonjuk a nekik megfelelő elvárt értékekből, amelyek nullák. Ezt követően konstansok által súlyozva majd összeadva az értékeket megkapjuk a PID bemenetét vagyis a hibát.

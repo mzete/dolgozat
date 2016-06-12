@@ -51,12 +51,13 @@ Assist prof. dr. Hunor Jakab
 
 \begin{abstractEN}
 	
-A szakdolgozat célja egy egyensúlyozó, kétkerekű MINDSTORMS EV3 robot irányításának megoldása hálózaton keresztül, telefonos alkalmazás segítségével. Ennek a célnak az eléréséhez szükséges két nagyobb feladat elvégzése. A kommunikációt megvalósító telefonos alkalmazás elkészítése illetve az egyensúlyba tartó algoritmus implementálása.
+The thesis’ goal is to accomplish a network communication between a mobile application and a MINDSTORMS EV3 two wheeled self balancing robot. To achieve this goal there are two main factors that need to be taken into consideration. Firstly the mobile application that needs to make the communication with the robot, and secondly an algorithm which makes the balancing of the robot possible.
 
-Az alkalmazás és az egyensúlyozást megvalósító algoritmus Java-ban íródott. A robot irányításáért felelős az EV3 vezérlőegység, amelyen Linux alapú leJOS keretrendszer fut. A robot PID (\texttt{Proportional Integral Derivative}) kontroller alkalmazásával és giroszkóp szenzor használatával marad egyensúlyban. Ahhoz hogy egyensúlyba maradjon a robot sebessége, dőlési szöge, szög változásának a sebessége 0-hoz kell közelítsen illetve annak az érdekében, hogy egy helyebe maradjon pozíciója is 0-hoz kell tartson.
-A PID bemeneti értéke a hiba, amely az elvárt érték és az aktuális érték különbsége. Esetünkben mivel 0-t kell közelítsünk annak érdekében, hogy ne veszítse el egyensúlyi állapotát a robot ezért az elvárt érték öröké 0 lesz, vagyis a hibát négy komponens alkotja: a robot dőlési szöge, szögsebessége, a robot sebessége és pozíciója. A komponensek megfelelő módosítása lehetővé teszi a robot mozgásának manipulálását. 
+The application and the algorithm which handles the balancing were written in Java. The EV3 control unit is responsible for navigating the robot with the help of the leJOS Linux based framework. The robot remains in a balanced position by using its PID \texttt{(Proportional Integral Derivative)} controller and its gyroscope sensor. For it to remain in a balanced state, its velocity, tilt angle and angular velocity needs to approximate to zero. Also its position needs to approximate to zero if it were to remain in a standing balanced position.
 
-Mobil részre egy telefonos alkalmazást fejlesztettünk, amely hálózaton keresztül kapcsolódik a robothoz és küldi a megfelelő parancsokat. Az alkalmazás és a robot közti kapcsolat létrehozásának automatizálására UPnP(\texttt{Universal Plug and Play}) könyvtárat használjuk, amely SSDP(\texttt{Simple Service Discovery Protocol}) protokollt használ.
+The PID’s input argument is the error variable which is the difference between the expected value and the current value. In our case we need the error to approximate to zero in order to not lose its balance. Because of this the expected value is always zero. In conclusion the error is made up of four components: the robots tilt angle, angular velocity, velocity and position. By properly modifying these components we can manipulate the robot’s movement.
+
+The mobile application connects to the robot through the network and sends eligible commands to it. To accomplish and automated connection between the two components I’ve used the UPnP \texttt{(Universal Plug and Play)} library, which uses SSDP \texttt{(Simple Service Discovery Protocol)} protocol.
 
 This work is the result of my own activity. I have neither given nor received unauthorized assistance on this work.
 
