@@ -176,10 +176,10 @@ A hibát az elvárt érték és az aktuális érték különbségéből kapjuk m
 A szög és szög változásának sebességét a giroszkóp szenzor által kérjük le. A leJOS firmware több módot is biztosít a giroszkóp használatára. Esetünkben a \texttt{rate} módot használjuk, amely a szög változásának a sebességét méri. Mérések esetén, mivel a szenzor nem mér pontosan, többször mintavételezünk és ezeket átlagoljuk, hogy kiszűrjük a zajokat. Az így megkapott szög változásának sebességéből kiszámítható a dőlési szög a következő képlettel: 
 
 \begin{equation} \label{szog}
-\varphi=\omega \cdot t,
+\varphi=\varphi_{0}+\omega \cdot t,
 \end{equation}
 
-ahol az $\omega$ jelöli a szög változásának sebességét illetve $t$ az eltelt időt.
+ahol az $\omega$ jelöli a szög változásának sebességét, $\varphi_{0}$ az eddigi szögek összegét illetve $t$ az eltelt időt.
 
 A szervomotorok esetén lekérhetjük a fordulat számát, amelyet a motorba beépített szenzor egy számlaló segítségével számol. A két motor fordulatszámát átlagoljuk, ezáltal kiszűrjük a zajokat. Az így megkapott értéket átalakítjuk szögbe, majd kiszámítjuk a robot sebességét valamint pozícióját.
 
