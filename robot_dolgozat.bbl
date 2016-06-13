@@ -1,4 +1,4 @@
-\begin{thebibliography}{9}
+\begin{thebibliography}{12}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -21,6 +21,11 @@ A lego történelmi idővonala, {\natexlab{a}}.
 A lego történelme, {\natexlab{b}}.
 \newblock URL \url{https://hu.wikipedia.org/wiki/LEGO}.
 \newblock Utolsó megtekintés dátuma: 2016-05-09.
+
+\bibitem[log()]{log4j}
+Log4j hivatalos oldal.
+\newblock URL \url{http://logging.apache.org/log4j/2.x/}.
+\newblock Utolsó megtekintés dátuma: 2016-06-13.
 
 \bibitem[min({\natexlab{a}})]{mindstormsEv3}
 A lego mindstorms ev3 hivatalos oldala, {\natexlab{a}}.
@@ -53,5 +58,15 @@ A google protocol buffers hivatalos oldala.
 Az rxc leírása.
 \newblock URL \url{http://lego.wikia.com/wiki/Mindstorms_RCX}.
 \newblock Utolsó megtekintés dátuma: 2016-05-16.
+
+\bibitem[slf()]{slf4j}
+Slf4j hivatalos oldal.
+\newblock URL \url{http://slf4j.org/}.
+\newblock Utolsó megtekintés dátuma: 2016-06-13.
+
+\bibitem[upn()]{upnp}
+Cling upnp könyvtár hivatalos oldala.
+\newblock URL \url{http://4thline.org/projects/cling/}.
+\newblock Utolsó megtekintés dátuma: 2016-06-13.
 
 \end{thebibliography}

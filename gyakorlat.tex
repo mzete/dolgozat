@@ -152,6 +152,19 @@ Klienssel való kapcsolat létrehozása után, mindaddig várja az utasításoka
 
 A strukturált adatok kinyerése érdekében a Google Protocol Buffers által legenerált hozzáférési osztályt használjuk. Az így megkapott értékeket átadjuk a szabályzó algoritmusnak, amely a hiba számításánál az elvárt értékeknek tekinti a robot dőlési szögét, szögsebességét, pozícióját, sebességét illetően.
 
+\subsection{Automatikus kapcsolódás}
+
+A robot és a telefonos alkalmazás közti kapcsolat automatikus létrehozását, amely felgyorsítja illetve megkönnyíti a felhasználónak a kapcsolódást a robothoz a Cling UPnP (\texttt{Universal Plug and Play)})~\cite{upnp} könyvtár által valósítottuk meg.
+
+A Cling UPnP könyvtár az SSDP (\texttt{Simple Service Discovery Protocol})\footnote{\href{https://en.wikipedia.org/wiki/Simple\_Service\_Discovery\_Protocol}{https://en.wikipedia.org/wiki/Simple\_Service\_Discovery\_Protocol}} portokólt használja.
+
+Szerver oldalon annak érdekében, hogy a kliens lássa a hálózaton úgymond kell "reklámozni" magát. Ahhoz, hogy a kliens megtalálja az általa keresett szervert, felkell fedezze az hálózaton levő szervereket, tehát "hallgatóznia" kell. Az ehhez szükséges metódusokat tartalmazza az UPnpService objektum. A szerver létre kell hozzon egy \texttt{UPnpService-t} amelyet futtatnia kell. Függetlenül attól, hogy szerver vagy kliens oldalon vagyunk, erre szükségünk van. Ezt követően hozza kell adjon egy eszközt(\texttt{Device-t}), amelynek meg kell adni egy egyedi azonosítót, típust amely a verzió, leírást és a szolgáltatást. Ezek mellet egy icon-t is meglehet adni. A szolgáltatás definiálása (\ref{service} ábrán látható) esetén szükséges egy egyedi azonosító és típus megadása, ez esetben a \texttt{@UpnpServiceId} és a \texttt{@UpnpServiceType} meta-annotációkat használhatunk. A változók illetve a metódusok esetén is szükséges az annotációk használata. Változók esetében a \texttt{@UpnpStateVariable} használható. Metódusok esetén \texttt{@UpnpAction} jelezzük, hogy metódus. Ezen kívül ha metódus akkor ha van bemeneti paramétere a \texttt{@UpnpInputArgument} használható illetve ha van visszatérési értéke a \texttt{@UpnpOutputArgument} annotáció használható.
+
+Lehetséges a metaadatokat megadása annotációk helyet XML formátumba is. 
+
+\lstinputlisting[label=service,caption= Szolgáltatás definiáló osztály, language=Java]{progfiles/Service.java}
+
+Egy \texttt{Control Point} létrehozása, amelyet hozzárendelünk az előbbiekben létrehozott UPnpService-hez. A \texttt{Control Point-ban} definiált \texttt{RegistryListener} esemény figyelő értesül ha valamely szerver állapota módosult a hálózaton. Ha a számunkra megfelelő állapotba került a szerver akkor leellenőrizhető, hogy rendelkezik e az általunk kereset szolgáltatás azonosító id-val. Abban az esetben ha rendelkezik, akkor a szolgáltatásban a meta-annotációkkal felannotált tevékenységeket futtathatjuk az \texttt{ActionInvocation} API segítségével.
 
 \section{Egyensúlyozás problémái}\label{sec:MEGVALOSITAS:pidModositas}
 
@@ -161,7 +174,7 @@ Az eredeti projekt struktúrája nem volt előnyös számunkra. E struktúra tar
 
 A projekt struktúrájának javítása érdekében külön választottuk a PID szabályzó algoritmust és a giroszkóp szenzor olvasásához szükséges metódusokat. E két osztály külön szálon indítjuk el. 
 
-A szinkronizálást a \texttt{CyclicBarrier}\footnote{\href{http://tutorials.jenkov.com/java-util-concurrent/cyclicbarrier.html}{http://tutorials.jenkov.com/java-util-concurrent/cyclicbarrier.html}} segítségével valósítottuk meg, amely a Java 7 része. A példányosításakor (\ref{barrier} ábrán látható) megadható, hogy hány szálal szeretnénk dolgozni. Szinkronizálás során a \texttt{await} metódus hívással a szál várakozik mindaddig míg az összes szál nem hívja meg ez a metódus. Mikor egy szál meghívja ez a metódus akkor a \texttt{CyclicBarrier} növeli a számlálóját és mindaddig várakozik a szál amíg ez a számláló nem éri el a példányosításkor megadott értéket. Valamint létrehoztunk egy központi osztályt, amely feladata a szálak kezelése és a szenzorokhoz illetve motorokhoz való hozzáférést biztosító objektumok példányosítása.
+A szinkronizálást a \texttt{CyclicBarrier}\footnote{\href{http://tutorials.jenkov.com/java-util-concurrent/cyclicbarrier.html}{http://tutorials.jenkov.com/java-util-concurrent/cyclicbarrier.html}} segítségével valósítottuk meg, amely a Java 7 része. A példányosításakor (\ref{barrier} ábrán látható) megadható, hogy hány szálal szeretnénk dolgozni. Szinkronizálás során a \texttt{await} metódus hívással a szál várakozik mindaddig míg az összes szál nem hívja meg ez a metódus. Mikor egy szál meghívja ez a metódus akkor a \texttt{CyclicBarrier} növeli a számlálóját és mindaddig várakozik a szál amíg ez a számláló nem éri el a példányosításkor megadott értéket. Valamint létrehoztunk egy központi osztályt, amely feladata a szálak kezelése és a szenzorokhoz illetve motorokhoz való hozzáférést biztosító objektumok példányosítása. Az eredeti projekt struktúráját átalakítva, a \ref{fig:gyroBoyUML} ábrán látható osztály diagrammal ábrázolt struktúra alakult ki.
 
 \begin{lstlisting}[label=barrier, caption= CyclicBarrier példányosítása , language=Java]
 
@@ -171,9 +184,11 @@ CyclicBarrier barrier = new CyclicBarrier(2);
 
 Kezdetben az volt az elképzelésünk, hogy külön válasszuk a jobb és bal motorokat irányító algoritmust, ezáltal egymástól függetlené téve őket. Ehhez szükséges volt a szabályzó algoritmus általánosítása illetve a két motor szinkronizálásának megoldása. Mivel külön szálon fut a giroszkóp kezelése és külön-külön a két motort szabályzó algoritmusa ezért minden iterációban a giroszkóp leolvasását egyszerre kellet végrehajtsák, különben más-más értékekkel dolgoztak, mely egyensúly vesztést okozott. Ehhez szükséges volt az előbb létrehozott \texttt{CyclicBarrier} konstruktorának átadott értékét növelése eggyel, mivel most már külön-külön kérte le a giroszkóp szenzor értékét a jobb és bal motorokat vezérlő szál. Emelet még egy újabb \texttt{CyclicBarrier} bevezetése volt szükséges, hogy a motorokat is szinkronizáljuk egymáshoz. E módosítást követően a robot rövid időn belül elvesztette az egyensúlyát.
 
-Mivel a robot LCD kijelzője nem megfelelő méretű, hogy tesztelésre alkalmas adatokat jelenítsünk meg futás közbe ezért szükség van a fájlba való kiirtásra és ezt követően az értékek értelmezése Matlab segítségével. E módszer igen csak időigényes és nehézkes, mivel a túl sok fájlba való írás leterheli a robot processzorát és növelődik egy iterációnak a végrehajtási ideje. Az iterációnként eltelt idő szerint számítsuk a robot sebességét és PID integrált illetve derivált tagját is. Tehát ha jelentősen tolódik egy iteráció lefutási ideje akkor az kritikusan befolyásolja az algoritmus működését.
+Mivel a robot LCD kijelzője nem megfelelő méretű, hogy tesztelésre alkalmas adatokat jelenítsünk meg futás közbe ezért szükség van a fájlba való kiíratásra és ezt követően az értékek értelmezésére Matlab segítségével. E módszer igen csak időigényes és nehézkes, mivel a túl sok fájlba való írás leterheli a robot processzorát és növelődik egy iterációnak a végrehajtási ideje. Az iterációnként eltelt idő szerint számítsuk a robot sebességét és PID integrált illetve derivált tagját is. Tehát ha jelentősen tolódik egy iteráció lefutási ideje akkor az kritikusan befolyásolja az algoritmus működését.
 
-\begin{figure}[!ht]
+Az előbb említett tesztelés esetén felmerülő probléma megoldására naplózási keretrendszer alkalmaztunk. Az Slf4J-LOG4J naplózási keretrendszert választottuk, az Slf4J~\cite{slf4j} egy absztrakciós szint, amely a LOG4J~\cite{log4j} naplózási keretrendszer implementációja fölött áll. A konfigurációs xml állományban szűrök használatával, lehetőségünk van a naplózási szintek  (debug, info, warning, error) elkülönítésére.
+
+\begin{figure}[!htb]
 	\begin{center}
 		\includegraphics[width=1.0\linewidth]{images/balTacho.eps}
 	\end{center}
@@ -181,7 +196,7 @@ Mivel a robot LCD kijelzője nem megfelelő méretű, hogy tesztelésre alkalmas
 	\label{balTachoFig}
 \end{figure}
 
-\begin{figure}[!ht]
+\begin{figure}[!htb]
 	\begin{center}
 		\includegraphics[width=1.0\linewidth]{images/jobbTacho.eps}
 	\end{center}
@@ -193,10 +208,23 @@ A szinkronizálás helyességének tesztelése után, a PID szabályzó bemeneti
 
 E probléma megoldására, mivel iterációnként nőt az eltérés a két párhuzamosan futó szabályzó közt, próbáltuk súlyozni az aktuális és az azelőtti mért fordulatszámot, hogy megközelítsük az átlagolt fordulatszámot. Az így megkapott értékre számoltuk ki a robot sebességét és pozícióját. A legjobb megközelítését, amelyet az átlagolt értékkel hasonlítottunk össze az látható a \ref{balTachoFig} és a \ref{jobbTachoFig} ábrákon. A kék szín jelöli a adott motor fordulatszámát illetve a zöld jelöli a motorok az átlagolt fordulatszámot. De még ez a közelítés sem volt elegendő, hogy a robot ne veszítse el az egyensúlyát.
 
+\pagebreak
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{images/gyroBoyUML.png}
+	\caption{A roboton futó alkalmazás osztály diagramja}
+	\label{fig:gyroBoyUML}
+\end{figure}
+\pagebreak
 
+\subsection{Irányítás megvalósítása és egyensúly megtartása}
 
+Miután sikeresen tudtunk kommunikálni a robottal, nekikezdtünk az irányítás megvalósításának. Rövid időn belül problémába is ütköztünk.
 
+Az első próbálkozásunk során, a motoroknak átadott értéken módosítottuk az irányításnak megfelelően. Jobbra és balra fordulásnál az iránynak ellentétesen a megfelelő motornak beállítandó értékét növeltük. Vagyis jobbra fordulásnál növeltük a bal motornak leadott értékét és balra forduláskor hasonlóan az előzőhöz. Ebben az esetben nem a saját tengelye körül fordult hanem egy hosszabb ívet írt le és eközben a PID szabályzó próbálta kompenzálni a hibát amit érzékelt. Hiszen hirtelen megnőtt a robot sebesség, hirtelen nagyot változott a pozíciója és megnőtt a dőlési szöge valamint a szögsebessége. Ennek eredményeként a robot egy-egy pillanatba lelassult majd felgyorsult. E probléma kiküszöbölésére nem csak a fordulás irányának az ellentettjének megfelelő motor leadott értékét növeltük, hanem ugyan azt az értéket ellentétes előjellel hozzáadtuk a másik motorhoz, vagyis jobbra kanyarodásnál a jobb motor értékéből kivontuk és bal motornak az értékéhez hozza adtuk. Így a saját tengelye körül fordul. E mellet a szenzorok sem érzékelnek olyan nagy mértékű változást, ami hirtelen befolyásolná a hiba komponenseinek értékét.
 
+Az előre és hátra való irányítás esetén is hasonló képen próbálkoztunk mint a fordulás estében de ez esetben azonos előjellel módosítottuk a kerekekre leadandó értéket. Ezért kis mértékben elmozdult az iránynak megfelelően majd a PID szabályzó korrigálta a hibát.
 
+Az első próbálkozásunk után a hiba négy komponensének(szög, szögsebesség, pozíció, robot sebesség) a módosításával próbáltuk elérni, hogy a robot előre vagy hátra fele irányítható legyen. Elképzelésünk szerint próbáltuk a giroszkóp által leolvasott dőlési szög értékét módosítani sikertelenül. Majd a későbbiekben sikerült részleges eredmény elérni. A robot pozíciójának megfelelő változtatásával képesek voltunk a megfelelő irányba elmozdítani a robotot úgy, hogy megtartsa egyensúlyi állapotát. E próbálkozás esetén a pozíció változtatásához bevezettünk egy ellensúlyozást(\texttt{offset}) amely értékét folyamatosan növeltük vagy csökkentettük és hozzáadtuk az aktuális pozícióhoz. Így az egyensúly megtartásához ellensúlyoznia kellet a pozíció értékét. Tehát ha növeltük az \texttt{offset} értékét a robot hátra ment ha pedig csökkentettük akkor előre ment. Ebben az esetben nem mindig volt elég ha csak egy konstanssal növeltük vagy csökkentettük az \texttt{offset} értékét, így nem volt meg az irányítás alatt egy konstans sebesség. Próbáltuk a szenzor által mért sebesség növelését de nem oldotta meg a felmerült problémát, csak az előbb említett viselkedést gyorsabban hajtotta végre.
 
- 
+A következő próbálkozásunk esetén ugyancsak a hibát módosítottuk, csak nem az aktuális értékeket hanem bevezettük az elvárt értéket ami eddig nulla volt. E mellet rájöttünk, hogy előre és hátra irányítás esetén a hibába szereplő pozíció tagot ki kell vegyük. A pozíció tag esetén a szabályzó arra törekszik, hogy egy helyben maradjon a robot. Tehát ha előre vagy hátra akarjuk mozdítani a robotot akkor az irányítás idejére ki kell vegyük ezt a tagot. Ehhez egy újabb PID szabályzó bevezetése volt szükséges, amelynek a bemeneti értéke a pozíció volt, értelemszerűen a másik PID szabályzó hibáját meghatározó komponensek közül kivettük. Tehát most van egy PID1 és egy PID2 szabályzónk. Irányítás hiányában a két szabályzó kimenetét összegeztük és ez az érték lett a végleges kimenet, amely a motorokra leadott erőt határozta meg. Irányítás alatt a PID2 szabályzót, amelynek a pozíció megtartásának szabályozása a feladata nem vettük figyelembe. A PID2 elhagyása illetve visszavétele kisebb akadály volt, mivel hirtelen csökkent a vagy nőt a szabályzó rendszer kimeneti értéke. E probléma megoldására próbáltuk több iterációra lebontani a különbséget de ez nem volt elégséges. Megoldása ha egyensúlyi állapotból irányított állapotba váltunk  akkor az aktuális állapotot vehetjük kiindulási pontnak, mivel a robot egyensúlyba van. Vissza váltás esetén a motorok fordulatszám mérőjét szükséges lenullázni  különben, a PID2 szabályzó túllendülést okoz. Túllendülés alatt értem, hogy motoroknak leadandó érték, amely a motor erejét határozza meg oly nagy lesz, hogy hirtelen nagyot változik a robot dőlési szöge és elveszti egyensúlyát.
