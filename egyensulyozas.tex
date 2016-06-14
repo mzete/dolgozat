@@ -1,6 +1,6 @@
 \chapter{Egyensúlyozás}\label{ch:EGYENSULY}
 \begin{osszefoglal}
-E fejezet célja, hogy bemutassa a PID szabályzó algoritmus működését. Emellett sor kelűr az egyensúlyozás működésének leírására, valamint, hogy miként lehet felhasználni ez esetbe a PID szabályzó algoritmust.
+E fejezet célja, hogy bemutassa a PID szabályzó algoritmus működését. Emellett sor kerül az egyensúlyozás működésének leírására, valamint, hogy miként lehet felhasználni ez esetbe a PID szabályzó algoritmust.
 \end{osszefoglal}
 
 \section{PID szabályzó algoritmus}\label{sec:EGYENSULY:pid}
@@ -9,31 +9,29 @@ A szabályzó rendszereket kétféleképpen nevezhetjük nyílt vagy zárt ciklu
 
 A PID\texttt{(Proportional Integral Derivate)}~\cite{pid} elterjedt zárt ciklusos rendszer az ipari szabályzó körökben, köszönhetően a viszonylag egyszerű félépítésének és a könnyű kezelhetőségének. Számos felhasználási lehetősége van, ilyenek a nyomás, hőmérséklet, sebesség szabályozás. E szabályzó rendszer bementi értéke az aktuális hiba.
 
-A hibát az elvárt érték és az aktuális érték különbsége határozza meg. Esetünkben az aktuális értékek a következők: robot dőlési szöge, szög változásának sebessége, a robot pozíciója illetve sebessége. Az előbb felsorolt értékek esetén az elvárt értékek, ahhoz, hogy a robot egyensúlyi állapotba maradjon, 0-hoz kell közelítsenek.
+A hibát az elvárt érték és az aktuális érték különbsége határozza meg. Esetünkben az aktuális értékek a következők: robot dőlési szöge, szög változásának sebessége, a robot pozíciója, illetve sebessége. Az előbb felsorolt értékek esetén az elvárt értékek, ahhoz, hogy a robot egyensúlyi állapotba maradjon, 0-hoz kell közelítsenek.
 
-A szabályzó kimeneti értéke a motorokra leadott erő. Esetünkben tehát a visszacsatolás az előbb felsorolt négy értékben nyilvánul meg, mivel a kerekekre leadott erő befolyásolja ezen értékeket.
+A szabályzó kimeneti értéke a motorokra leadott erő. Esetünkben, tehát a visszacsatolás az előbb felsorolt négy értékben nyilvánul meg, mivel a kerekekre leadott erő befolyásolja ezen értékeket.
 
-A PID, mint a nevéből is látható három tagból tevődik össze: P \texttt{(Proportional)} az arányos tag, I \texttt{(Integral)} a hibák integrált tagja és a D \texttt{(Derivate)} a hibák időbeli változásának derivált tagja. Abban az esetben ha az előbb felsorolt tagok közül nem veszünk figyelembe minden tagot, akkor a következő szabályzókról beszélhetünk: P, PI és PD.
+A PID, mint a nevéből is látható, három tagból tevődik össze: P \texttt{(Proportional)} az arányos tag, I \texttt{(Integral)} a hibák integrált tagja és a D \texttt{(Derivate)} a hibák időbeli változásának derivált tagja. Abban az esetben, ha az előbb felsorolt tagok közül nem veszünk figyelembe minden tagot, akkor a következő szabályzókról beszélhetünk: P, PI és PD.
 
-PID szabályzó matematikai képlete: $$u(t)=K_{P}e(t)+K_{I}\int e(t)dt+K_{D}\frac{d}{dt}e(t),$$ ahol $t$ jelöli az időt, $e(t)$ a bemeneti hibát, illetve az $u(t)$ a kimenet. A $K_{P}, K_{I}, K_{D}$ paraméterek rendre az arányos, az integrált és a derivált tagok súlya, amelyek meghatározzák a szabályzó érzékenységét és teljesítményét.
+PID szabályzó matematikai képlete: $$u(t)=K_{P}\cdot e(t)+K_{I}\cdot\int e(t)dt+K_{D}\cdot\frac{d}{dt}e(t),$$ ahol $t$ jelöli az időt, $e(t)$ a bemeneti hibát, illetve az $u(t)$ a kimenetet. A $K_{P}, K_{I}, K_{D}$ paraméterek rendre az arányos, az integrál és a derivált tagok súlya, amelyek meghatározzák a szabályzó érzékenységét és teljesítményét.
 
-Kizárólag az arányos tag használata esetén a szabályzó rendszer olyan eseteknél használható, ahol megengedett egy bizonyos nagyságú hiba kimenetben miután a rendszer stabilizálódott. Az arányos tag paramétere a $K_{P}$, amely egy konstans érték, ha túl nagy instabil rendszert eredményez.
+Kizárólag az arányos tag használata esetén a szabályzó rendszer olyan eseteknél használható, ahol megengedett egy bizonyos nagyságú hiba a kimenetben, miután a rendszer stabilizálódott. Az arányos tag paramétere a $K_{P}$, amely egy konstans érték, ha túl nagy instabil rendszert eredményez.
 
-Az integrál tag önmagában nem használható mint az arányos tag. Az integrál tag esetén a hibák összege mindaddig változik míg az arányos tag nulla nem lesz. Tehát a feladata egy pontosabb és precízebb szabályzó rendszer biztosítása. Numerikus módszer segítségével közelítjük meg, melynek a következő a képlete:$$u(t)=K_{I}\cdot\sum e(t),$$ ahol az előbbihez hasonlóan $K_{I}$ konstans.
+Az integrál tag önmagában nem használható, mint az arányos tag. Az integrál tag esetén a hibák összege mindaddig változik míg az arányos tag nulla nem lesz. Tehát a feladata egy pontosabb és precízebb szabályzó rendszer biztosítása. Numerikus módszer segítségével közelítjük meg, melynek a következő a képlete:$$u(t)=K_{I}\cdot\sum e(t),$$ ahol az előbbihez hasonlóan $K_{I}$ konstans.
 
-A derivált tag értéke arányos a hiba változási sebességével. Feladata a hirtelen változások késleltetése, ezáltal egy stabilabb rendszert biztosítva. Ez esetben is közelítéssel oldható meg a probléma:$$u(t)=K_{D}\cdot (e(t) - e(t-1),$$ ahol szintén a $K_{D}$ konstans.
+A derivált tag értéke arányos a hiba változási sebességével. Feladata a hirtelen változások késleltetése, ezáltal egy stabilabb rendszert biztosítva. Ez esetben is közelítéssel oldható meg a probléma:$$u(t)=K_{D}\cdot (e(t) - e(t-1)),$$ ahol szintén a $K_{D}$ konstans.
 
 A PID szabályzó működését a $K_{P}, K_{I}, K_{D}$ tagok finomhangolásával tudjuk befolyásolni. Ezáltal feladatra szabható a szabályzó.  A PID szabályzó implementálása során a nehézség abban rejlik, hogy megfelelően hangoljuk a tagok értékét. Finomhangolás alatt azt értjük, hogy a megfelelő értékek megválasztásával egy működő rendszert hozzunk létre.
 
 A \ref{pidFig} ábrán látható a PID szabályzó tagjainak változása egy teszt esetén. Jól látható az ábrán, hogy a derivált tag ellentétes előjelű az arányos taghoz viszonyítva, ennek köszönhetően a hirtelen változások késleltetve lesznek. Az integrált tag és az arányos tag esetén jól látható, hogy hasonló oszcillációt végeznek.
 
-
-
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=1\linewidth]{images/pid.eps}
 	\captionsetup{justification=centering,margin=1.5cm}
-	\caption[Egy tesz során kapott PID tagjainak értékeit ábrázolja]
-	{Egy tesz során kapott PID tagjainak értékeit ábrázolja. Az x tengelyen jelöljük a iterációk számát,	az y tengelyen a PID tagok értékének mértékét.}
+	\caption[Egy teszt során kapott PID tagjainak értékeit ábrázolja]
+	{Egy teszt során kapott PID tagjainak értékeit ábrázolja. Az x tengelyen jelöljük az iterációk számát, az y tengelyen a PID tagok értékének mértékét.}
 	\label{pidFig}
 \end{figure}

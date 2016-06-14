@@ -5,7 +5,7 @@ A fejezetben bemutatásra kerül a LEGO megalakulása, fejlődése. E mellett so
 \end{osszefoglal}
 
 \section{LEGO megalakulása}\label{sec:ROBOT:lego}
-A LEGO~\cite{lego}\cite{legoHistory} története 1932-ben kezdődött, Ole Kirk Christiansen\footnote{\href {http://lego.wikia.com/wiki/Ole\_Kirk\_Christiansen}{http://lego.wikia.com/wiki/Ole\_Kirk\_Christiansen}} asztalos vállalkozást alapított Dánia, Billund nevezetű falujában, amely a fa játékok gyártásával foglalkozott. 1934-ben vette fel a cég a LEGO nevet, amely a LEG GODT dán szóból ered. 1947 után kezdtek el műanyagból előállítani játékokat, amelyek fő célja az volt, hogy könnyedén egymásba illeszthetőek, illetve szétszedhetőek legyenek. Az alapító fia, Godtfred Christian, lett az igazgató 1958-ban, ekkor alakult meg a ma ismert LEGO vállalat és vezetésével fellendült a cég. Az első számítógép által vezérelt robot 1986-ban jelent meg, amelyet követően 1988-ban a LEGO és az MIT \texttt{(Massachusetts Institute of Technology)} együttműködésével elkezdődött az "inteligens tégla" fejlesztése, mely lehetőséget ad a programozhatóságra.
+A LEGO~\cite{lego} története 1932-ben kezdődött, Ole Kirk Christiansen\footnote{\href {http://lego.wikia.com/wiki/Ole\_Kirk\_Christiansen}{http://lego.wikia.com/wiki/Ole\_Kirk\_Christiansen}} asztalos vállalkozást alapított Dánia, Billund nevezetű falujában, amely a fa játékok gyártásával foglalkozott. 1934-ben vette fel a cég a LEGO nevet, amely a LEG GODT dán szóból ered. 1947 után kezdtek el műanyagból előállítani játékokat, amelyek fő célja az volt, hogy könnyedén egymásba illeszthetőek, illetve szétszedhetőek legyenek. Az alapító fia, Godtfred Christian, lett az igazgató 1958-ban, ekkor alakult meg a ma ismert LEGO vállalat és vezetésével fellendült a cég. Az első számítógép által vezérelt robot 1986-ban jelent meg, amelyet követően 1988-ban a LEGO és az MIT \texttt{(Massachusetts Institute of Technology)} együttműködésével elkezdődött az "inteligens tégla" fejlesztése, mely lehetőséget ad a programozhatóságra.
 
 \section{LEGO MINDSTORMS}\label{sec:ROBOT:mindstorms}
 A LEGO  első játéka, amit forgalmazott Ole Kirk Christians vezetésével, a fából készült "LEGO Duck". Évekkel később megjelentek a műanyag játékok. Ma már világszerte ismert a LEGO építőjáték, egymással összeilleszthető, kombinálható elemeket tartalmaz, így szinte bármi megépíthető belőle és rendkívül hasznos oktatási eszköz. 
@@ -19,7 +19,9 @@ Az RXC~\cite{rxcAttribution}, amelyet a \ref{fig:RXC} ábra szemlélteti, az els
 \begin{figure}[!htb]
 	\centering
 	\pgfimage[width=0.4\linewidth]{images/RXC}
-	\caption{RXC brick}
+	\caption[RXC brick]
+	{RXC brick\\
+	\href{http://www.noucamp.org/cp1/psol/NXT.html}{http://www.noucamp.org/NXT.html}}
 	\label{fig:RXC}
 \end{figure}
 
@@ -31,7 +33,9 @@ Az NXT tartalmaz négy bemeneti portot, három kimeneti portot és egy 2.0 USB p
 \begin{figure}[!htb]
 	\centering
 	\pgfimage[width=0.4\linewidth]{images/NXT}
-	\caption{NXT brick}
+	\caption[NXT brick]
+	{NXT brick\\
+	\href{http://shop.lego.com/en-CA/NXT-Intelligent-Brick-9841}{http://shop.lego.com/NXT-Intelligent-Brick}}
 	\label{fig:NXT}
 \end{figure}
 
@@ -48,7 +52,9 @@ Mivel a LEGO MINDSTORMS generációk közül a legfejlettebb ezért a projekt á
 \begin{figure}[!htb]
 	\centering
 	\pgfimage[width=0.4\linewidth]{images/EV3}
-	\caption{EV3 brick}
+	\caption[EV3 brick]
+	{EV3 brick\\
+	\href{http://shop.lego.com/en-CA/EV3-Intelligent-Brick-45500}{http://shop.lego.com/EV3-Intelligent-Brick}}
 	\label{fig:EV3}
 \end{figure}
 
@@ -57,7 +63,7 @@ Mivel a LEGO MINDSTORMS generációk közül a legfejlettebb ezért a projekt á
 Az NXT generációval megjelentek a szervomotorok, amelyek legfőbb tulajdonsága a pontosság. Két típusa jelent meg a közepes és a nagy szervomotor. Mind a kettőnél megmaradt a pontosság, de a méretük, az erejük és a reagálási idejük eltérnek. Tovább fejlesztették a motorokat, amelyek az EV3 generációval jelentek meg. Az EV3 nagy motorjának teljesítménye megegyezik az NXT-vel de a felépítését optimalizálták, illetve az EV3 közepes motorja teljesen új az NXT-hez képest.
 
 \subsection{Nagy motor}
-A nagy motor, amelyet a \ref{fig:lMotor} ábrázol, erőteljes, ideális az általunk megépített robot irányítására. A motorba beépített forgásérzékelő által  információkat lehet lekérni a pillanatnyi állapotáról, amely fokban vagy teljes fordulatban mér.
+A nagy motor~\cite{sensorMotor}, amelyet a \ref{fig:lMotor} ábrázol, erőteljes, ideális az általunk megépített robot irányítására. A motorba beépített forgásérzékelő által  információkat lehet lekérni a pillanatnyi állapotáról, amely fokban vagy teljes fordulatban mér.
 
 A nagy motorok sebessége 160-170 rmp, forgatónyomatéka 20 N/cm és, ha blokkolt állapotba kerül, akkor a nyomatéka 40N/cm. A motor beépített forgásérzékelője lehetővé teszi a pontos vezérlést +/- 1 fok pontossággal.
 
@@ -67,12 +73,18 @@ A robot mozgatását a nagy motorok segítségével fogjuk elérni, habár lassa
 	\centering
 	\minipage{0.4\textwidth}
 	\pgfimage[width=0.9\linewidth]{images/large_motor}
-	\caption{Nagy motor}
+	\captionsetup{justification=centering,margin=1.5cm}
+	\caption[Nagy motor]
+	{Nagy motor\\
+	\href{http://shop.lego.com/en-CA/EV3-Large-Servo-Motor-45502}{http://shop.lego.com/EV3-Large-Servo-Motor}}
 	\label{fig:lMotor}
 	\endminipage
 	\minipage{0.4\textwidth}
 	\pgfimage[width=0.8\linewidth]{images/medium_motor}
-	\caption{Közepes motor}
+	\captionsetup{justification=centering,margin=1.5cm}
+	\caption[Közepes motor]
+	{Közepes motor\\
+	\href{http://shop.lego.com/en-CA/EV3-Medium-Servo-Motor-45503}{http://shop.lego.com/EV3-Medium-Servo-Motor}}
 	\label{fig:mMotor}
 	\endminipage
 \end{figure}
@@ -91,13 +103,15 @@ A digitális színszenzor, amelyet a \ref{fig:colorSensor} ábrázol, hét kül�
 \begin{figure}[!htb]
 	\centering
 	\pgfimage[width=0.4\linewidth]{images/color_sensor}
-	\caption{Szín szenzor}
+	\caption[Szín szenzor]
+	{Szín szenzor\\
+	\href{http://shop.lego.com/en-CA/EV3-Color-Sensor-45506}{http://shop.lego.com/EV3-Color-Sensor}}
 	\label{fig:colorSensor}
 \end{figure}
 
 \subsection{Giroszkóp szenzor}
 
-A digitális giroszkóp szenzor, amely látható a \ref{fig:gyroSensor} ábrán, mi is felhasználunk, az EV3-al egy időben jelent meg. A giroszkóp igen elterjedt szenzor, megtalálható okos telefonokban, illetve különféle navigációs rendszerek vagy akár irányításért felelős vezérlőegységek használják. 
+A digitális giroszkóp szenzor~\cite{sensorMotor}\cite{sensor}, amely látható a \ref{fig:gyroSensor} ábrán, mi is felhasználunk, az EV3-al egy időben jelent meg. A giroszkóp igen elterjedt szenzor, megtalálható okos telefonokban, illetve különféle navigációs rendszerek vagy akár irányításért felelős vezérlőegységek használják. 
 
 Az EV3 giroszkóp szenzora egy tengely mentén tud mérni. Látható a \ref{fig:gyroFok} ábrán, hogy a giroszkópon fel van tüntetve két nyíl és ennek segítségével be tudjuk állítani a pozícióját, ha jobb oldali nyíl irányába mozdítjuk, akkor mínusz értéket kapunk, ha ellentétesen, akkor egyértelműen pozitívat. 
 
@@ -107,12 +121,18 @@ A giroszkóp három módban használható. Mérhető az elfordulási szög fokba
 	\centering
 	\minipage{0.4\textwidth}
 	\pgfimage[width=0.8\linewidth]{images/gyro_sensor}
-	\caption{Giroszkóp szenzor}
+	\captionsetup{justification=centering,margin=1.5cm}
+	\caption[Giroszkóp szenzor]
+	{Giroszkóp szenzor\\
+	\href{http://shop.lego.com/en-CA/EV3-Gyro-Sensor-45505}{http://shop.lego.com/EV3-Gyro-Sensor}}
 	\label{fig:gyroSensor}
 	\endminipage
-	\minipage{0.6\textwidth}
-	\pgfimage[width=0.4\linewidth]{images/gyro_fok}
-	\caption{A giroszkóp szögelfordulási mutatója}
+	\minipage{0.3\textwidth}
+	\pgfimage[width=0.9\linewidth]{images/gyro_fok}
+	\captionsetup{justification=centering,margin=0.5cm}
+	\caption[A giroszkóp szögelfordulási mutatója]
+	{A giroszkóp szögelfordulási mutatója\\
+	\href{https://education.lego.com/en-au/preschool-and-school/secondary/mindstorms-education-ev3/instant-success/instant-success-3}{https://education.lego.com/\\mindstorms-education-ev3}}
 	\label{fig:gyroFok}
 	\endminipage
 \end{figure}
@@ -123,7 +143,9 @@ Az analóg nyomásérzékelője egy piros gombbal van felszerelve, ami látható
 \begin{figure}[!htb]
 	\centering
 	\pgfimage[width=0.4\linewidth]{images/touche_sensor}
-	\caption{Nyomásérzékelő}
+	\caption[Nyomásérzékelő]
+	{Nyomásérzékelő\\
+	\href{http://shop.lego.com/en-CA/EV3-Touch-Sensor-45507}{http://shop.lego.com/EV3-Touch-Sensor}}
 	\label{fig:touchSensor}
 \end{figure}
 
@@ -133,7 +155,9 @@ A digitális ultrahang szenzor, amely a \ref{fig:ultrasonicSensor} ábrán láth
 \begin{figure}[!htb]
 	\centering
 	\pgfimage[width=0.4\linewidth]{images/ultrasonic_sensor}
-	\caption{Ultrahang szenzor}
+	\caption[Ultrahang szenzor]
+	{Ultrahang szenzor\\
+	\href{http://shop.lego.com/en-CA/EV3-Ultrasonic-Sensor-45504}{http://shop.lego.com/EV3-Ultrasonic-Sensor}}
 	\label{fig:ultrasonicSensor}
 \end{figure}
 
@@ -142,14 +166,20 @@ A digitális infravörös szenzor \ref{fig:infraSensor} ábrán látható, amely
 
 \begin{figure}[!htb]
 	\centering
-	\minipage{0.4\textwidth}
-	\pgfimage[width=0.5\linewidth]{images/infra_sensor}
-	\caption{Infravörös szenzor}
+	\minipage{0.3\textwidth}
+	\pgfimage[width=0.7\linewidth]{images/infra_sensor}
+	\captionsetup{justification=centering}
+	\caption[Infravörös szenzor]
+	{Infravörös szenzor\\
+	\href{http://shop.lego.com/en-CA/EV3-Infrared-Sensor-45509}{http://shop.lego.com/EV3-Infrared-Sensor}}
 	\label{fig:infraSensor}
 	\endminipage
-	\minipage{0.4\textwidth}
-	\pgfimage[width=0.5\linewidth]{images/beacon}
-	\caption{Infravörös jeladó}
+	\minipage{0.3\textwidth}
+	\pgfimage[width=0.7\linewidth]{images/beacon}
+	\captionsetup{justification=centering}
+	\caption[Infravörös jeladó]
+	{Infravörös jeladó\\
+	\href{http://shop.lego.com/en-CA/EV3-Infrared-Beacon-45508}{http://shop.lego.com/EV3-Infrared-Beacon}}
 	\label{fig:beacon}
 	\endminipage
 \end{figure}
@@ -179,9 +209,9 @@ A szög és szög változásának sebességét a giroszkóp szenzor által kérj
 \varphi=\varphi_{0}+\omega \cdot t,
 \end{equation}
 
-ahol az $\omega$ jelöli a szög változásának sebességét, $\varphi_{0}$ az eddigi szögek összegét illetve $t$ az eltelt időt.
+ahol az $\omega$ jelöli a szög változásának sebességét, $\varphi_{0}$ az eddigi szögek összegét, illetve $t$ az eltelt időt.
 
-A szervomotorok esetén lekérhetjük a fordulat számát, amelyet a motorba beépített szenzor egy számlaló segítségével számol. A két motor fordulatszámát átlagoljuk, ezáltal kiszűrjük a zajokat. Az így megkapott értéket átalakítjuk szögbe, majd kiszámítjuk a robot sebességét valamint pozícióját.
+A szervomotorok esetén lekérhetjük a fordulatszámát, amelyet a motorba beépített szenzor egy számláló segítségével számol. A két motor fordulatszámát átlagoljuk, ezáltal kiszűrjük a zajokat. Az így megkapott értéket átalakítjuk szögbe, majd kiszámítjuk a robot sebességét, valamint pozícióját.
 
 A sebességet és a pozíciót a következő képletekkel határozzuk meg:
 
@@ -192,6 +222,6 @@ A sebességet és a pozíciót a következő képletekkel határozzuk meg:
 	x=\alpha\cdot d,
 \end{equation}
 
-ahol az $\alpha$ jelöli a motor elfordulási szögét, az $\alpha'$ az előző időpillanatban a motor elfordulási szögét, a $t$ az eltelt időt, a $d$ a kerék átmérőjét, a $v$ a robot sebességét illetve az $x$ robot pozícióját.
+ahol az $\alpha$ jelöli a motor elfordulási szögét, az $\alpha'$ az előző időpillanatban a motor elfordulási szögét, a $t$ az eltelt időt, a $d$ a kerék átmérőjét, a $v$ a robot sebességét, illetve az $x$ a robot pozícióját.
 
-Az előbbiekben kiszámított négy értéket kivonjuk a nekik megfelelő elvárt értékekből, amelyek nullák. Ezt követően konstansok által súlyozva majd összeadva az értékeket megkapjuk a PID bemenetét vagyis a hibát.
+Az előbbiekben kiszámított négy értéket kivonjuk a nekik megfelelő elvárt értékekből, amelyek nullák. Ezt követően konstansok által súlyozva, majd összeadva az értékeket, megkapjuk a PID bemenetét vagyis a hibát.
